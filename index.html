@@ -56,6 +56,18 @@ h1,h2,h3,h4{color:var(--ink); margin:0; text-wrap:balance; letter-spacing:-.02em
 .cta{flex:none; background:var(--turquesa); color:#0A1522; font-weight:600; font-size:14.5px; border:0; border-radius:999px; padding:11px 20px; cursor:pointer; font-family:inherit}
 .cta:hover{background:var(--dorado)}
 
+/* ── apertura ── */
+.hero{padding:76px 0 12px; max-width:1000px}
+.hero .rule{width:46px; height:3px; background:linear-gradient(90deg,var(--turquesa),var(--dorado)); border-radius:2px}
+.hero .eyebrow{display:block; margin:20px 0 16px; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-weight:500; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--azul)}
+.hero h1{margin:0; font-size:clamp(32px,4.6vw,52px); line-height:1.07; letter-spacing:-.032em; color:var(--azul)}
+.hero .lead{margin:22px 0 0; font-size:clamp(16.5px,1.5vw,19.5px); line-height:1.58; max-width:64ch}
+.hero .diff{margin:34px 0 0; padding:6px 0 6px 20px; border-left:3px solid var(--dorado);
+  max-width:72ch; font-size:16px; line-height:1.6}
+.hero .diff b{color:var(--ink); font-weight:600}
+@media (max-width:560px){.hero{padding:46px 0 8px}}
+
 /* ── sub-navegación flotante ── */
 .sub{background:var(--page); border:1px solid var(--line); border-radius:16px; box-shadow:var(--ring);
   margin-top:28px; padding:16px 22px; display:flex; align-items:center; gap:22px; flex-wrap:wrap}
@@ -264,8 +276,16 @@ html{scroll-behavior:smooth}
   </div>
 </header>
 
-<main class="wrap" id="soluciones">
-  <div class="sub">
+<main class="wrap">
+  <section class="hero">
+    <div class="rule"></div>
+    <span class="eyebrow">Human Leadership. Intelligent Performance.</span>
+    <h1>Firma de consultoría empresarial e inteligencia artificial aplicada.</h1>
+    <p class="lead">Ayudamos a las organizaciones a vender mejor, desarrollar líderes más efectivos, optimizar sus operaciones e implementar tecnología que produzca resultados medibles. Cuatro frentes de intervención y un solo método que los une.</p>
+    <p class="diff"><b>Lo que nos hace distintos:</b> antes de atribuir un problema de desempeño a las personas, verificamos si las condiciones del sistema permitían el resultado esperado. Tenemos un método documentado para distinguir una cosa de la otra.</p>
+  </section>
+
+  <div class="sub" id="soluciones">
     <h2>Soluciones EXVO</h2>
     <div class="tabs" role="group" aria-label="Filtrar por pilar">
       <button class="tab" type="button" data-f="all" aria-pressed="true">Información general</button>
