@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://exvo.co/sitemap.xml
+Sitemap: https://lorduyandes.github.io/exvo-web/sitemap.xml
