@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="EXVO es una firma de consultoría empresarial y soluciones de inteligencia artificial aplicada: desempeño comercial, desarrollo de liderazgo, excelencia operativa y transformación organizacional.">
+<meta name="author" content="EXVO">
+<meta name="theme-color" content="#14283C">
+<link rel="canonical" href="https://exvo.co/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EXVO">
+<meta property="og:title" content="EXVO — Human Leadership. Intelligent Performance.">
+<meta property="og:description" content="EXVO es una firma de consultoría empresarial y soluciones de inteligencia artificial aplicada: desempeño comercial, desarrollo de liderazgo, excelencia operativa y transformación organizacional.">
+<meta property="og:url" content="https://exvo.co/">
+<meta property="og:image" content="https://exvo.co/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>EXVO — Consultoría empresarial e inteligencia artificial aplicada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Catálogo corporativo: barra institucional, sub-navegación flotante y retícula de tarjetas
+   con halo degradado en estado de enfoque. Paleta EXVO: azul estructura, turquesa señal, dorado valor. */
+:root{
+  --ui:"Plus Jakarta Sans";
+  --azul:#14283C; --turquesa:#55DCC6; --dorado:#E8BD7C;
+  --page:#FFFFFF; --surface:#F1F4F8;
+  --ink:#14283C; --body:#4C5D6E; --muted:#73849A; --line:#E2E8EF;
+  --bar:#14283C; --bar-ink:#EAF1F6; --chip:#FFFFFF;
+  --ring:0 1px 2px rgba(20,40,60,.06), 0 8px 24px rgba(20,40,60,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --page:#0A1522; --surface:#15293D;
+  --ink:#EAF1F6; --body:#A7BACD; --muted:#7D93A8; --line:#24394F;
+  --bar:#07111C; --bar-ink:#EAF1F6; --chip:#0F2033;
+  --ring:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --page:#0A1522; --surface:#15293D;
+  --ink:#EAF1F6; --body:#A7BACD; --muted:#7D93A8; --line:#24394F;
+  --bar:#07111C; --bar-ink:#EAF1F6; --chip:#0F2033;
+  --ring:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--page); color:var(--body);
+  font-family:var(--ui),"Segoe UI",system-ui,-apple-system,sans-serif;
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{color:var(--ink); margin:0; text-wrap:balance; letter-spacing:-.02em; font-weight:600}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace; font-weight:500; letter-spacing:.06em; text-transform:uppercase; font-size:11px; font-variant-numeric:tabular-nums}
+.wrap{max-width:1180px; margin:0 auto; padding-inline:20px}
+
+/* ── barra institucional ── */
+.bar{background:var(--bar); position:sticky; top:env(safe-area-inset-top,0px); z-index:30}
+.bar-in{display:flex; align-items:center; gap:28px; height:68px}
+.logo{font-weight:700; font-size:22px; letter-spacing:.14em; color:#fff; flex:none}
+.logo i{font-style:normal; background:linear-gradient(120deg,var(--turquesa),var(--dorado)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.nav{display:flex; gap:22px; flex:1; min-width:0; overflow-x:auto; scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--bar-ink); text-decoration:none; font-size:14.5px; white-space:nowrap; opacity:.85; padding-block:6px; border-bottom:1.5px solid transparent}
+.nav a:hover{opacity:1; border-bottom-color:var(--turquesa)}
+.cta{flex:none; background:var(--turquesa); color:#0A1522; font-weight:600; font-size:14.5px; border:0; border-radius:999px; padding:11px 20px; cursor:pointer; font-family:inherit}
+.cta:hover{background:var(--dorado)}
+
+/* ── sub-navegación flotante ── */
+.sub{background:var(--page); border:1px solid var(--line); border-radius:16px; box-shadow:var(--ring);
+  margin-top:28px; padding:16px 22px; display:flex; align-items:center; gap:22px; flex-wrap:wrap}
+.sub h2{font-size:17px; flex:none}
+.tabs{display:flex; gap:8px; flex-wrap:wrap}
+.tab{font-family:inherit; font-size:13.5px; color:var(--body); background:transparent; border:1px solid var(--line);
+  border-radius:999px; padding:7px 15px; cursor:pointer}
+.tab:hover{border-color:var(--turquesa); color:var(--ink)}
+.tab[aria-pressed="true"]{background:var(--azul); border-color:var(--turquesa); color:#fff}
+.count{color:var(--muted); margin:34px 0 14px}
+
+/* ── retícula de soluciones ── */
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:26px}
+.card{position:relative; isolation:isolate; background:var(--surface); border:1px solid var(--line);
+  border-radius:18px; padding:28px 28px 22px; display:flex; flex-direction:column; gap:14px; min-width:0;
+  transition:transform .25s ease}
+.card::before{content:''; position:absolute; inset:-3px; border-radius:20px; z-index:-1;
+  background:linear-gradient(130deg,var(--dorado),var(--turquesa) 55%,var(--azul)); filter:blur(16px);
+  opacity:0; transition:opacity .3s ease}
+.card::after{content:''; position:absolute; inset:0; border-radius:18px; padding:1.5px; pointer-events:none;
+  background:linear-gradient(130deg,var(--dorado),var(--turquesa));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); mask-composite:exclude;
+  opacity:0; transition:opacity .3s ease}
+.card:hover,.card:focus-within{transform:translateY(-3px)}
+.card:hover::before,.card:focus-within::before{opacity:.55}
+.card:hover::after,.card:focus-within::after{opacity:1}
+.chip{align-self:flex-start; font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.06em;
+  background:var(--chip); border:1px solid var(--line); border-radius:7px; padding:5px 10px; color:var(--body)}
+.logic{display:flex; align-items:center; gap:8px; color:var(--muted); font-size:13.5px}
+.logic svg{flex:none; color:var(--turquesa)}
+.card h3{font-size:20.5px; line-height:1.25}
+.card p{margin:0; font-size:15px}
+.svc{list-style:none; margin:2px 0 0; padding:0; display:grid; gap:8px}
+.svc li{position:relative; padding-left:16px; font-size:14.5px}
+.svc li::before{content:''; position:absolute; left:0; top:.6em; width:6px; height:6px; border-radius:2px; background:var(--turquesa)}
+.foot{margin-top:auto; padding-top:18px; border-top:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:12px}
+.more{display:inline-flex; align-items:center; gap:9px; background:none; border:0; padding:0; cursor:pointer;
+  font-family:inherit; font-size:14.5px; font-weight:600; color:var(--ink)}
+.more svg{transition:transform .2s ease}
+.more:hover svg{transform:translateX(4px)}
+.plus{width:36px; height:36px; flex:none; border-radius:50%; border:1px solid var(--line); background:var(--page);
+  color:var(--ink); font-size:19px; line-height:1; cursor:pointer; font-family:inherit; display:grid; place-items:center}
+.plus:hover{border-color:var(--turquesa); color:var(--turquesa)}
+.panel{border-top:1px solid var(--line); margin-top:4px; padding-top:16px; display:grid; gap:12px}
+.panel h4{font-size:11px; letter-spacing:.06em; text-transform:uppercase; font-family:"IBM Plex Mono",monospace; font-weight:500; color:var(--muted)}
+.panel p{font-size:14.5px}
+:focus-visible{outline:2px solid var(--turquesa); outline-offset:3px; border-radius:6px}
+
+/* ── banda de método ── */
+.method{margin-top:58px; background:var(--azul); border-radius:20px; padding:36px 30px}
+.method .mono{color:var(--turquesa)}
+.method h2{color:#fff; font-size:25px; margin:10px 0 6px}
+.method p{margin:0 0 24px; max-width:62ch; color:#AFC2D1; font-size:15px}
+/* ciclo interactivo: anillo con nodos en profundidad + panel de conceptos */
+.cycle{display:grid; grid-template-columns:minmax(0,520px) minmax(0,1fr); gap:34px; align-items:center; margin-top:4px}
+.ring{position:relative; width:100%; aspect-ratio:520/440; perspective:1000px}
+.ring svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
+.hub{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); text-align:center; pointer-events:none}
+.hub b{display:block; font-family:"IBM Plex Mono",monospace; font-size:40px; font-weight:500; color:#fff; line-height:1; transition:color .3s ease}
+.hub span{display:block; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.14em; color:#7E94A8; margin-top:7px}
+.node{position:absolute; width:134px; transform:translate(-50%,-50%); transform-style:preserve-3d;
+  background:#1B3550; border:1px solid rgba(255,255,255,.14); border-radius:14px; padding:12px 10px;
+  cursor:pointer; font-family:inherit; text-align:center; color:#B9CBDA;
+  transition:transform .32s cubic-bezier(.2,.7,.3,1), box-shadow .32s ease, border-color .3s ease, background .3s ease, color .3s ease}
+.node .nnum{display:block; font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em; color:#7E94A8; transition:color .3s ease}
+.node .nname{display:block; font-size:12.5px; font-weight:600; letter-spacing:.055em; margin-top:5px}
+.node:hover{border-color:rgba(255,255,255,.3)}
+.node[aria-selected="true"]{
+  background:#20405E; color:#fff; border-color:var(--acc);
+  transform:translate(-50%,-50%) translateZ(54px) scale(1.07);
+  box-shadow:0 18px 44px rgba(0,0,0,.5), 0 0 0 1px var(--acc), 0 0 34px -4px var(--acc);
+}
+.node[aria-selected="true"] .nnum{color:var(--acc)}
+.dot{position:absolute; width:9px; height:9px; border-radius:50%; background:var(--acc); transform:translate(-50%,-50%); opacity:0; transition:opacity .3s ease}
+
+.cpanel{min-width:0}
+.cpanel .pnum{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.08em; color:var(--acc)}
+.cpanel h3{color:#fff; font-size:23px; letter-spacing:.02em; margin:9px 0 10px}
+.cpanel .pdesc{margin:0 0 20px; font-size:15.5px; line-height:1.6; color:#C3D3DF; max-width:52ch}
+.cpanel .lbl{display:block; font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:#8BA3B7; margin-bottom:11px}
+.chips{display:flex; gap:9px; flex-wrap:wrap}
+.pill{border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.05); border-radius:999px;
+  padding:8px 15px; font-size:13.5px; color:#DCE7EF}
+.pill{border-color:color-mix(in srgb, var(--acc) 42%, transparent); background:color-mix(in srgb, var(--acc) 9%, transparent)}
+.pill em{font-style:normal; color:#93AABC; font-size:12.5px}
+.pill b{font-weight:600; color:#fff; font-family:"IBM Plex Mono",monospace; font-size:11.5px; margin-right:5px}
+.cpanel .hint{margin:18px 0 0; font-size:12.5px; color:#7E94A8; font-style:italic; max-width:none}
+.method .loop{margin:30px 0 0; padding-top:18px; border-top:1px solid rgba(255,255,255,.11);
+  font-size:13.5px; color:#9FB4C6; max-width:none}
+.method .loop b{color:#fff; font-weight:600}
+@media (max-width:860px){
+  .cycle{grid-template-columns:1fr; gap:26px}
+  .ring{display:flex; flex-wrap:wrap; gap:9px; aspect-ratio:auto; perspective:none; justify-content:flex-start}
+  .ring svg,.hub{display:none}
+  .node{position:static; width:auto; flex:1 1 132px; transform:none; padding:11px 12px}
+  .node[aria-selected="true"]{transform:none; box-shadow:0 0 0 1px var(--acc), 0 0 22px -6px var(--acc)}
+  .dot{display:none}
+}
+
+/* ── halo de enfoque reutilizable ── */
+.hov{position:relative; isolation:isolate; transition:transform .25s ease}
+.hov::before{content:''; position:absolute; inset:-3px; border-radius:inherit; z-index:-1; pointer-events:none;
+  background:linear-gradient(130deg,var(--dorado),var(--turquesa) 55%,var(--azul)); filter:blur(15px);
+  opacity:0; transition:opacity .3s ease}
+.hov::after{content:''; position:absolute; inset:0; border-radius:inherit; padding:1.5px; pointer-events:none;
+  background:linear-gradient(130deg,var(--dorado),var(--turquesa));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); mask-composite:exclude;
+  opacity:0; transition:opacity .3s ease}
+.hov:hover,.hov:focus-within{transform:translateY(-3px)}
+.hov:hover::before,.hov:focus-within::before{opacity:.5}
+.hov:hover::after,.hov:focus-within::after{opacity:1}
+.hov.sm:hover,.hov.sm:focus-within{transform:none}
+.hov.sm:hover::before,.hov.sm:focus-within::before{opacity:.32}
+
+/* ── fundador ── */
+.founder{margin-top:26px; border:1px solid var(--line); border-radius:20px; padding:34px 30px; background:var(--page)}
+.ftop{display:grid; grid-template-columns:290px minmax(0,1fr); gap:36px; align-items:start}
+.photo{aspect-ratio:4/5; border-radius:16px; background:var(--surface);
+  border:1px solid var(--line); box-shadow:var(--ring)}
+.photo img{width:100%; height:100%; object-fit:cover; object-position:center 18%; display:block;
+  border-radius:inherit}
+.founder h2{font-size:34px; margin:10px 0 5px}
+.frole{font-size:15.5px; color:var(--body); margin:0}
+.fpos{margin:14px 0 0; font-size:13.5px; color:var(--muted)}
+.fhead{display:inline-block; margin:22px 0 0; padding-top:18px; border-top:2px solid var(--dorado);
+  font-size:21px; font-weight:600; color:var(--ink); letter-spacing:-.015em}
+.fbio{margin-top:22px}
+.fbio p{margin:0 0 14px; font-size:15.5px; max-width:66ch}
+.fbio p:last-child{margin-bottom:0}
+.cred{display:grid; grid-template-columns:repeat(auto-fit,minmax(198px,1fr)); gap:14px; margin-top:32px}
+.ccard{border:1px solid var(--line); border-top:3px solid var(--turquesa); border-radius:14px;
+  padding:20px; background:var(--surface)}
+.ccard.gold{border-top-color:var(--dorado)}
+.ccard .mono{display:block; color:var(--muted); margin-bottom:9px}
+.ccard b{display:block; color:var(--ink); font-size:20px; font-weight:600; line-height:1.2; letter-spacing:-.015em}
+.ccard .cap{display:block; margin-top:7px; font-size:13.5px}
+.proof{margin-top:32px; border:1px solid var(--line); border-top:3px solid var(--turquesa);
+  border-radius:16px; padding:28px 26px; background:var(--surface)}
+.proof h3{font-size:20px; margin:10px 0 7px}
+.proof .lead{margin:0 0 22px; font-size:15px; max-width:72ch}
+.pgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(228px,1fr)); gap:18px}
+.pitem{border:1px solid var(--line); border-radius:14px; padding:20px; background:var(--page)}
+.pitem b{display:block; color:var(--ink); font-size:15px; font-weight:600; margin-bottom:7px; line-height:1.35}
+.pitem p{margin:0; font-size:14px; line-height:1.55}
+.proof .closing{margin:24px 0 0; padding-top:18px; border-top:1px solid var(--line); font-size:14.5px}
+.proof .closing b{color:var(--ink); font-weight:600}
+.areas{margin-top:34px; padding-top:28px; border-top:1px solid var(--line)}
+.areas .mono{display:block; color:var(--muted); margin-bottom:12px}
+.areas .note{margin:12px 0 0; font-size:12.5px; color:var(--muted); line-height:1.5}
+.schips{display:flex; gap:8px; flex-wrap:wrap}
+.schip{border:1px solid var(--line); border-radius:999px; padding:7px 14px; font-size:13.5px; background:var(--surface)}
+.schip.tech{border-color:var(--dorado)}
+.fclose{margin-top:32px; background:var(--azul); border-radius:16px; padding:32px 30px}
+.fclose .mono{display:block; color:var(--dorado); margin-bottom:12px}
+.fclose h3{color:#fff; font-size:23px; margin:0 0 11px; letter-spacing:-.02em}
+.fclose p{margin:0; color:#AFC2D1; font-size:15.5px; max-width:74ch}
+@media (max-width:760px){
+  .ftop{grid-template-columns:1fr; gap:24px} .photo{max-width:220px}
+  .areas{grid-template-columns:1fr} .fclose{padding:26px 22px}
+}
+
+/* ── siguiente paso ── */
+.next{margin-top:26px; border:1px solid var(--line); border-radius:20px; padding:34px 30px; display:grid; gap:26px;
+  grid-template-columns:1.25fr 1fr; align-items:start; background:var(--surface)}
+.next h2{font-size:24px; margin:10px 0 10px}
+.next ol{margin:0; padding-left:22px; display:grid; gap:9px; font-size:15px}
+.contact{border-left:3px solid var(--turquesa); padding-left:20px; display:grid; gap:14px}
+.contact div b{display:block; color:var(--ink); font-size:16px; font-weight:600}
+.contact .mono{color:var(--muted); display:block; margin-bottom:3px}
+.pend{font-size:13.5px; color:var(--muted)}
+.cta.big{display:inline-flex; align-items:center; gap:10px; text-decoration:none; margin-top:6px; padding:13px 22px; font-size:15px}
+.copyline{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.copy{font-family:inherit; font-size:12px; font-weight:600; color:var(--body); background:var(--page);
+  border:1px solid var(--line); border-radius:999px; padding:4px 11px; cursor:pointer}
+.copy:hover{border-color:var(--turquesa); color:var(--ink)}
+.copy.ok{border-color:var(--turquesa); color:var(--turquesa)}
+
+@media (max-width:760px){.next{grid-template-columns:1fr}}
+@media (max-width:560px){
+  .bar-in{height:60px; gap:16px} .nav{display:none}
+  .card{padding:24px 22px 20px} .method,.next{padding:26px 22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>
+:root{color-scheme:light}
+*{-webkit-tap-highlight-color:transparent}
+img{max-width:100%}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar-in">
+    <span class="logo">EX<i>VO</i></span>
+    <nav class="nav">
+      <a href="#soluciones">Soluciones</a>
+      <a href="#metodo">Metodología</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="cta" type="button" id="agendar">Agendar diagnóstico</button>
+  </div>
+</header>
+
+<main class="wrap" id="soluciones">
+  <div class="sub">
+    <h2>Soluciones EXVO</h2>
+    <div class="tabs" role="group" aria-label="Filtrar por pilar">
+      <button class="tab" type="button" data-f="all" aria-pressed="true">Información general</button>
+      <button class="tab" type="button" data-f="Sales" aria-pressed="false">Sales</button>
+      <button class="tab" type="button" data-f="Leadership" aria-pressed="false">Leadership</button>
+      <button class="tab" type="button" data-f="AI" aria-pressed="false">AI</button>
+      <button class="tab" type="button" data-f="Operations" aria-pressed="false">Operations</button>
+    </div>
+  </div>
+
+  <p class="mono count" id="count">Mostrando 1 – 4 (4)</p>
+
+  <div class="grid" id="grid">
+    <article class="card" data-p="Sales">
+      <span class="chip">Sales</span>
+      <span class="logic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4 11 23l-8-8 9.6-9.6A2 2 0 0 1 14 4.8h6a1 1 0 0 1 1 1v6a2 2 0 0 1-.4 1.6Z"/><circle cx="17" cy="8" r="1.2" fill="currentColor" stroke="none"/></svg>Programa · 6 semanas · honorarios por grupo</span>
+      <h3>Sales &amp; Revenue Performance</h3>
+      <p>Incrementar la efectividad del equipo comercial mediante el desarrollo de la capacidad de liderazgo: observación de comportamientos, retroalimentación y seguimiento de indicadores.</p>
+      <ul class="svc">
+        <li>Diagnóstico de desempeño comercial</li>
+        <li>Desarrollo de líderes comerciales y sales coaching</li>
+        <li>Diseño de sistemas de seguimiento de indicadores</li>
+      </ul>
+      <div class="panel" hidden>
+        <div><h4>Entregables</h4><p>Diagnóstico de la operación comercial, formación práctica sobre casos reales del equipo, acompañamiento individual a cada supervisor, gerente o líder, planes de acción con responsables y plazos, y tablero de seguimiento de resultados.</p></div>
+        <div><h4>Indicadores que se trabajan</h4><p>Conversión · ingresos por vendedor · productividad comercial · tasa de cancelación · efectividad de supervisores · adopción de comportamientos comerciales.</p></div>
+      </div>
+      <div class="foot">
+        <button class="more" type="button">Más información <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button class="plus" type="button" aria-expanded="false" aria-label="Ver entregables e indicadores">+</button>
+      </div>
+    </article>
+
+    <article class="card" data-p="Leadership">
+      <span class="chip">Leadership</span>
+      <span class="logic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4 11 23l-8-8 9.6-9.6A2 2 0 0 1 14 4.8h6a1 1 0 0 1 1 1v6a2 2 0 0 1-.4 1.6Z"/><circle cx="17" cy="8" r="1.2" fill="currentColor" stroke="none"/></svg>Programa · 90 días · honorarios por grupo</span>
+      <h3>Leadership &amp; Talent Development</h3>
+      <p>Implementar un sistema de conversaciones de liderazgo que permanezca operando en la organización una vez finalizada la intervención.</p>
+      <ul class="svc">
+        <li>Feedback en el Momento</li>
+        <li>Conversaciones de desarrollo con metodología ACUERDO</li>
+        <li>Seguimiento y verificación de compromisos</li>
+      </ul>
+      <div class="panel" hidden>
+        <div><h4>Entregables</h4><p>Diagnóstico de liderazgo, guías de conversación, talleres por grupo de líderes, bitácoras de seguimiento, sesiones de calibración entre líderes y evaluación de adopción al cierre.</p></div>
+        <div><h4>Condición de método</h4><p>Grupos de 8 a 12 líderes en sesiones de 3 horas. Por encima de ese número no es posible garantizar práctica individual con observación y corrección.</p></div>
+      </div>
+      <div class="foot">
+        <button class="more" type="button">Más información <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button class="plus" type="button" aria-expanded="false" aria-label="Ver entregables y condición de método">+</button>
+      </div>
+    </article>
+
+    <article class="card" data-p="AI">
+      <span class="chip">AI</span>
+      <span class="logic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4 11 23l-8-8 9.6-9.6A2 2 0 0 1 14 4.8h6a1 1 0 0 1 1 1v6a2 2 0 0 1-.4 1.6Z"/><circle cx="17" cy="8" r="1.2" fill="currentColor" stroke="none"/></svg>Proyecto · cuatro fases de entrega</span>
+      <h3>AI &amp; Intelligent Automation</h3>
+      <p>Digitalizar el seguimiento, automatizar la generación de reportes y habilitar análisis que soporten la toma de decisiones de los líderes.</p>
+      <ul class="svc">
+        <li>Diagnóstico de oportunidades de automatización</li>
+        <li>Asistentes y agentes sobre los datos de la organización</li>
+        <li>Integración con los sistemas existentes</li>
+      </ul>
+      <div class="panel" hidden>
+        <div><h4>Fases de entrega</h4><p>Diagnóstico tecnológico, diseño y prototipo funcional, implementación por etapas, capacitación y transferencia. Cada fase concluye con un componente en operación.</p></div>
+        <div><h4>Principios</h4><p>Seguridad, privacidad y supervisión humana. La inteligencia artificial propone; la decisión corresponde al líder.</p></div>
+      </div>
+      <div class="foot">
+        <button class="more" type="button">Más información <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button class="plus" type="button" aria-expanded="false" aria-label="Ver fases de entrega y principios">+</button>
+      </div>
+    </article>
+
+    <article class="card" data-p="Operations">
+      <span class="chip">Operations</span>
+      <span class="logic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4 11 23l-8-8 9.6-9.6A2 2 0 0 1 14 4.8h6a1 1 0 0 1 1 1v6a2 2 0 0 1-.4 1.6Z"/><circle cx="17" cy="8" r="1.2" fill="currentColor" stroke="none"/></svg>Proyecto · por alcance</span>
+      <h3>Business &amp; Operational Excellence</h3>
+      <p>Reducir la brecha entre las condiciones que el proceso ofrece y los resultados que se exigen a los equipos.</p>
+      <ul class="svc">
+        <li>Diagnóstico organizacional y de procesos</li>
+        <li>Diseño de indicadores y gestión por resultados</li>
+        <li>Planes de mejora con acompañamiento a líderes operativos</li>
+      </ul>
+      <div class="panel" hidden>
+        <div><h4>Entregables</h4><p>Mapa de brechas, procesos estandarizados, tablero de indicadores, plan de mejora y mecanismos de seguimiento.</p></div>
+        <div><h4>Fundamento</h4><p>La metodología exige verificar si las condiciones del sistema permitían el desempeño esperado antes de atribuir la causa a las personas. Cuando la causa es del sistema, la intervención corresponde a este pilar.</p></div>
+      </div>
+      <div class="foot">
+        <button class="more" type="button">Más información <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button class="plus" type="button" aria-expanded="false" aria-label="Ver entregables y fundamento">+</button>
+      </div>
+    </article>
+  </div>
+
+  <section class="method" id="metodo">
+    <span class="mono">Un método · cuatro ámbitos de aplicación</span>
+    <h2>Observar, comprender, intervenir, verificar y consolidar</h2>
+    <p>El mismo ciclo aplicado al desempeño comercial, al comportamiento de liderazgo, a los procesos y a la infraestructura tecnológica que los soporta. Es la razón por la que los cuatro pilares constituyen una sola firma y no cuatro ofertas independientes.</p>
+    <div class="cycle" style="--acc:#55DCC6">
+      <div class="ring" id="ring" role="tablist" aria-label="Los cinco momentos del ciclo">
+        <svg viewBox="0 0 520 440" aria-hidden="true">
+          <defs>
+            <linearGradient id="gr" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#55DCC6" stop-opacity=".5"/>
+              <stop offset=".5" stop-color="#9AA6F5" stop-opacity=".35"/>
+              <stop offset="1" stop-color="#E8BD7C" stop-opacity=".5"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="260" cy="220" rx="187" ry="176" fill="none" stroke="url(#gr)" stroke-width="2"/>
+          <path d="M300 48 l20 7 -16 13 z" fill="#55DCC6" opacity=".75"/>
+        </svg>
+        <div class="hub" id="hub"><b>01</b><span>EL CICLO</span></div>
+        <button class="node" style="left:50%;  top:10%"   role="tab" aria-selected="true"  data-i="0"><span class="nnum">01</span><span class="nname">OBSERVAR</span></button>
+        <button class="node" style="left:84.2%;top:37.6%" role="tab" aria-selected="false" data-i="1"><span class="nnum">02</span><span class="nname">COMPRENDER</span></button>
+        <button class="node" style="left:71.1%;top:82.4%" role="tab" aria-selected="false" data-i="2"><span class="nnum">03</span><span class="nname">DESARROLLAR</span></button>
+        <button class="node" style="left:28.9%;top:82.4%" role="tab" aria-selected="false" data-i="3"><span class="nnum">04</span><span class="nname">VERIFICAR</span></button>
+        <button class="node" style="left:15.8%;top:37.6%" role="tab" aria-selected="false" data-i="4"><span class="nnum">05</span><span class="nname">EVOLUCIONAR</span></button>
+      </div>
+
+      <div class="cpanel" id="cpanel" aria-live="polite">
+        <span class="pnum" id="cnum">MOMENTO 01</span>
+        <h3 id="cname">OBSERVAR</h3>
+        <p class="pdesc" id="cdesc">Se reúne evidencia concreta del comportamiento: qué ocurrió, cuándo y con qué efecto. No percepciones ni impresiones.</p>
+        <span class="lbl" id="clbl">Qué se documenta</span>
+        <div class="chips" id="cchips">
+          <span class="pill">El hecho observado</span><span class="pill">El contexto</span><span class="pill">El efecto en el resultado</span><span class="pill">La expectativa de referencia</span>
+        </div>
+        <p class="hint">Pase el cursor sobre cada momento del ciclo.</p>
+      </div>
+    </div>
+
+    <p class="loop"><b>Dos reglas que el método no negocia.</b> La falta de voluntad nunca se concluye por descarte: requiere evidencia propia. Y el ciclo no se cierra porque la conversación haya terminado, sino cuando el comportamiento se observa distinto y se mantiene.</p>
+  </section>
+
+  <section class="founder">
+   <div class="ftop">
+    <div class="photo hov">
+      <img src="foto-fundador.jpg" alt="Retrato de Jesús Daniel Lorduy, fundador de EXVO" width="400" height="400">
+    </div>
+    <div>
+      <span class="mono" style="color:var(--muted)">Quién está detrás de EXVO</span>
+      <h2>Jesús Daniel Lorduy</h2>
+      <p class="frole">Fundador de EXVO</p>
+      <p class="fpos">Liderazgo Comercial · Sales Enablement · Business Performance · Inteligencia Artificial Aplicada</p>
+      <p class="fhead">Experiencia operativa. Visión estratégica. Inteligencia artificial aplicada.</p>
+      <div class="fbio">
+        <p>Con más de diez años de trayectoria profesional y más de ocho liderando desempeño comercial, Jesús Daniel ha dirigido la estrategia de ventas y la habilitación comercial de más de trece equipos que atienden cuentas empresariales globales, con responsabilidad directa sobre pronósticos, metas de conversión e indicadores de ingreso.</p>
+        <p>Su trayectoria reúne tres capacidades que rara vez coinciden en la misma persona. Desplegó analítica de comportamiento con inteligencia artificial para identificar las conductas comerciales de mayor impacto y dirigir intervenciones sobre ellas. Elevó tasas de conversión mediante coaching estructurado, retroalimentación en el momento e intervenciones dirigidas de desempeño, con varios integrantes de su equipo promovidos a roles de liderazgo. Y lideró el despliegue internacional del modelo operativo comercial en Filipinas, construyendo el equipo y formando al liderazgo local desde el lanzamiento.</p>
+        <p>Su experiencia incluye el diseño y la gestión de programas de incentivos evaluados con datos de desempeño, la definición de metas de conversión y margen alineadas a los objetivos del negocio, y la adopción de herramientas de analítica y plataformas de inteligencia artificial para dar visibilidad a la operación.</p>
+        <p>Ha sido reconocido tres trimestres consecutivos por desempeño comercial, desarrollo de equipos y cumplimiento sostenido de metas, y premiado por su contribución medible al crecimiento de ingresos.</p>
+        <p>Ingeniero y Magíster en Inteligencia Artificial de la Universidad de los Andes, con formación en alta gerencia y certificación Lean Six Sigma. Bilingüe en español e inglés.</p>
+        <p><b>EXVO nace de esa visión:</b> conectar estrategia comercial, liderazgo, operaciones e inteligencia artificial para transformar desafíos empresariales en oportunidades de crecimiento y mejora.</p>
+      </div>
+    </div>
+   </div>
+
+   <div class="cred">
+     <div class="ccard hov">
+       <span class="mono">Trayectoria</span>
+       <b>Más de 10 años</b>
+       <span class="cap">Experiencia profesional</span>
+     </div>
+     <div class="ccard hov">
+       <span class="mono">Alcance de liderazgo</span>
+       <b>Más de 1.000 personas</b>
+       <span class="cap">Estrategia comercial a través de más de 13 equipos</span>
+     </div>
+     <div class="ccard hov">
+       <span class="mono">Despliegue internacional</span>
+       <b>Filipinas</b>
+       <span class="cap">Construcción del equipo y formación del liderazgo local</span>
+     </div>
+     <div class="ccard gold hov">
+       <span class="mono">Formación de posgrado</span>
+       <b>Magíster en Inteligencia Artificial</b>
+       <span class="cap">Universidad de los Andes</span>
+     </div>
+     <div class="ccard gold hov">
+       <span class="mono">Formación profesional</span>
+       <b>Ingeniería</b>
+       <span class="cap">Base técnica y analítica · Lean Six Sigma</span>
+     </div>
+   </div>
+
+   <div class="proof">
+     <span class="mono" style="color:var(--muted)">Dónde se probó este método</span>
+     <h3>El método existía antes de ser una firma.</h3>
+     <p class="lead">Las tres piezas centrales de lo que EXVO ofrece hoy no salieron de un aula: se aplicaron sobre equipos comerciales con meta y con resultados a la vista.</p>
+     <div class="pgrid">
+       <div class="pitem hov">
+         <b>Analítica de comportamiento para dirigir intervenciones</b>
+         <p>Identificar las conductas que mueven el resultado y actuar sobre ellas, en lugar de pedir más esfuerzo al equipo.</p>
+       </div>
+       <div class="pitem hov">
+         <b>Coaching estructurado y retroalimentación en el momento</b>
+         <p>Las dos intervenciones que hoy están en el centro del método, aplicadas sobre operaciones comerciales que se miden a diario.</p>
+       </div>
+       <div class="pitem hov">
+         <b>Un modelo operativo instalado en otro país</b>
+         <p>La evidencia de que el sistema se transfiere a una organización que no lo conocía, con su propio idioma y su propia cultura de trabajo.</p>
+       </div>
+     </div>
+   </div>
+
+   <div class="areas">
+     <div>
+       <span class="mono">Áreas de experiencia</span>
+       <div class="schips">
+         <span class="schip hov sm">Sales Leadership</span>
+         <span class="schip hov sm">Sales Enablement</span>
+         <span class="schip hov sm">Revenue Performance</span>
+         <span class="schip hov sm">Coaching &amp; Talent Development</span>
+         <span class="schip hov sm">Business Operations</span>
+         <span class="schip hov sm">Performance Management</span>
+         <span class="schip tech hov sm">Applied Artificial Intelligence</span>
+       </div>
+     </div>
+   </div>
+
+   <div class="fclose">
+     <span class="mono">Del conocimiento empresarial a soluciones inteligentes</span>
+     <h3>De liderar resultados a construir soluciones para quienes necesitan alcanzarlos.</h3>
+   </div>
+  </section>
+
+  <section class="next" id="contacto">
+    <div>
+      <span class="mono" style="color:var(--muted)">Siguiente paso</span>
+      <h2>Diagnóstico de 30 minutos</h2>
+      <ol>
+        <li>Revisión del contexto: número de líderes, nivel, equipos a cargo y situación actual de las conversaciones de desempeño.</li>
+        <li>Identificación de dos o tres situaciones recurrentes en la operación.</li>
+        <li>Recomendación del pilar y del formato con que conviene iniciar, y propuesta ajustada en los días siguientes.</li>
+      </ol>
+    </div>
+    <div class="contact">
+      <div><span class="mono">Fundador</span><b>Jesús Daniel Lorduy</b></div>
+      <div>
+        <span class="mono">Correo</span>
+        <b class="copyline"><span id="mail">j.lorduy@uniandes.edu.co</span><button class="copy" type="button" id="copymail" aria-label="Copiar el correo">Copiar</button></b>
+      </div>
+      <div><span class="mono">Ciudad</span><b>Bogotá, Colombia</b></div>
+      <a class="cta big" href="https://wa.me/573507938124?text=Hola%20Jes%C3%BAs%20Daniel%2C%20vi%20la%20p%C3%A1gina%20de%20EXVO%20y%20quisiera%20agendar%20los%2030%20minutos%20de%20diagn%C3%B3stico." target="_blank" rel="noopener">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.8-.2a12 12 0 0 1-5.6-4.9c-.6-1-.8-1.9-.6-2.6.1-.5.7-1.3 1.2-1.5.3-.1.7 0 .9.4l.7 1.6c.1.3 0 .5-.2.7l-.4.5c-.1.2-.2.4 0 .7.5.9 1.6 1.9 2.6 2.4.3.1.5.1.7-.1l.5-.5c.2-.2.4-.3.7-.2l1.6.8c.3.2.4.5.4.8 0 .2 0 .5-.1.7Z"/></svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var grid=document.getElementById('grid'), count=document.getElementById('count'),
+      cards=[].slice.call(grid.querySelectorAll('.card'));
+
+  grid.addEventListener('click',function(e){
+    var btn=e.target.closest('.plus')||e.target.closest('.more');
+    if(!btn) return;
+    var card=btn.closest('.card'), panel=card.querySelector('.panel'), plus=card.querySelector('.plus');
+    var open=panel.hidden;
+    panel.hidden=!open;
+    plus.textContent=open?'–':'+';
+    plus.setAttribute('aria-expanded',open?'true':'false');
+  });
+
+  var tabs=[].slice.call(document.querySelectorAll('.tab[data-f]'));
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      tabs.forEach(function(o){o.setAttribute('aria-pressed',String(o===t))});
+      var f=t.dataset.f, shown=0;
+      cards.forEach(function(c){
+        var on=(f==='all'||c.dataset.p===f);
+        c.hidden=!on; if(on) shown++;
+      });
+      count.textContent=shown?('Mostrando 1 – '+shown+' ('+shown+')'):'Sin resultados (0)';
+    });
+  });
+
+  try{localStorage.removeItem('exvo-font')}catch(e){}
+
+  /* ── ciclo interactivo ── */
+  var M=[
+    {acc:'#55DCC6', name:'OBSERVAR',
+     desc:'Se reúne evidencia concreta del comportamiento: qué ocurrió, cuándo y con qué efecto. No percepciones ni impresiones.',
+     lbl:'Qué se documenta',
+     chips:['El hecho observado','El contexto','El efecto en el resultado','La expectativa de referencia']},
+    {acc:'#3FA9DE', name:'COMPRENDER',
+     desc:'Se establece por qué ocurre, entre cinco causas posibles, antes de decidir cualquier intervención. Ninguna se da por confirmada sin evidencia.',
+     lbl:'Las cinco causas, en el orden en que se revisan',
+     chips:['<b>1</b>Condiciones del sistema','<b>2</b>Conocimiento','<b>3</b>Habilidad','<b>4</b>Voluntad','<b>5</b>Todavía no está claro']},
+    {acc:'#E8BD7C', name:'DESARROLLAR',
+     desc:'Se interviene con el formato que corresponde a la causa identificada, no con el que resulta más cómodo para el líder.',
+     lbl:'Las tres formas de intervenir',
+     chips:['Feedback en el Momento <em>· minutos</em>','Conversación de Desarrollo, con metodología ACUERDO <em>· una sesión</em>','Práctica Guiada <em>· varias sesiones cortas</em>']},
+    {acc:'#3ED598', name:'VERIFICAR',
+     desc:'Se observa nuevamente el comportamiento para confirmar si el cambio ocurrió y si se sostiene en condiciones reales de trabajo.',
+     lbl:'Criterio de cierre',
+     chips:['Comportamiento observado de nuevo','¿Se sostiene en el tiempo?','Acción realizada ≠ comportamiento cambiado']},
+    {acc:'#9AA6F5', name:'EVOLUCIONAR',
+     desc:'El resultado queda registrado y disponible para la siguiente conversación con esa persona o ese equipo. El desarrollo deja de depender de la memoria individual.',
+     lbl:'Qué permanece en la organización',
+     chips:['Registro del ciclo','Memoria del desarrollo','Criterio compartido entre líderes']}
+  ];
+  var ring=document.getElementById('ring'), hub=document.getElementById('hub'),
+      nodes=[].slice.call(ring.querySelectorAll('.node')),
+      cyc=ring.closest('.cycle'),
+      cnum=document.getElementById('cnum'), cname=document.getElementById('cname'),
+      cdesc=document.getElementById('cdesc'), clbl=document.getElementById('clbl'),
+      cchips=document.getElementById('cchips'), active=-1;
+
+  function show(i){
+    if(i===active) return; active=i;
+    var m=M[i], n=('0'+(i+1)).slice(-2);
+    cyc.style.setProperty('--acc',m.acc);
+    nodes.forEach(function(b,k){b.setAttribute('aria-selected',String(k===i))});
+    hub.querySelector('b').textContent=n;
+    hub.querySelector('b').style.color=m.acc;
+    cnum.textContent='MOMENTO '+n;
+    cname.textContent=m.name;
+    cdesc.textContent=m.desc;
+    clbl.textContent=m.lbl;
+    cchips.innerHTML=m.chips.map(function(c){return '<span class="pill">'+c+'</span>'}).join('');
+  }
+  nodes.forEach(function(b,i){
+    b.addEventListener('mouseenter',function(){show(i)});
+    b.addEventListener('focus',function(){show(i)});
+    b.addEventListener('click',function(){show(i)});
+    b.addEventListener('keydown',function(e){
+      var d=e.key==='ArrowRight'||e.key==='ArrowDown'?1:(e.key==='ArrowLeft'||e.key==='ArrowUp'?-1:0);
+      if(!d) return; e.preventDefault();
+      nodes[(i+d+nodes.length)%nodes.length].focus();
+    });
+  });
+  show(0);
+
+  var cm=document.getElementById('copymail');
+  if(cm) cm.addEventListener('click',function(){
+    var nodo=document.getElementById('mail'), txt=nodo.textContent.trim();
+    function ok(){cm.textContent='Copiado'; cm.classList.add('ok');
+      setTimeout(function(){cm.textContent='Copiar'; cm.classList.remove('ok')},1800);}
+    function seleccionar(){
+      var r=document.createRange(); r.selectNodeContents(nodo);
+      var sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    }
+    try{ navigator.clipboard.writeText(txt).then(ok, seleccionar); }
+    catch(e){ seleccionar(); }
+  });
+
+  document.getElementById('agendar').addEventListener('click',function(){
+    document.getElementById('contacto').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+</script>
+</body>
+</html>
