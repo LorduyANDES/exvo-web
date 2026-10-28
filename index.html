@@ -111,7 +111,9 @@ a{color:inherit}
 .hero-in{position:relative; z-index:1; max-width:1000px}
 .hero .mono{color:var(--turquesa); display:block; margin-bottom:22px}
 .hero h1{color:#fff; font-size:clamp(36px,5.6vw,66px); line-height:1.03; letter-spacing:-.038em; font-weight:800}
-.hero .lead{margin-top:26px; font-size:clamp(17px,1.7vw,20.5px); line-height:1.56; max-width:62ch; color:#B9CBDA}
+.hero .hsub{margin-top:22px; font-size:clamp(18px,1.9vw,23px); line-height:1.4; max-width:50ch;
+  color:var(--turquesa); font-weight:600; letter-spacing:-.018em}
+.hero .lead{margin-top:20px; font-size:clamp(16.5px,1.5vw,18.5px); line-height:1.6; max-width:64ch; color:#A9BCCB}
 .actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:38px}
 .btn{display:inline-flex; align-items:center; gap:10px; font-family:inherit; font-size:15.5px; font-weight:700;
   border-radius:999px; padding:14px 26px; cursor:pointer; text-decoration:none; border:1.5px solid transparent}
@@ -119,7 +121,7 @@ a{color:inherit}
 .btn-1:hover{background:var(--dorado)}
 .btn-2{border-color:rgba(255,255,255,.3); color:#fff}
 .btn-2:hover{border-color:var(--turquesa); color:var(--turquesa)}
-.pillars-strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px;
+.pillars-strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr)); gap:1px;
   margin-top:clamp(44px,6vw,72px); background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.1); border-radius:14px; overflow:hidden}
 .pillars-strip div{background:rgba(11,24,38,.55); padding:20px 22px}
 .pillars-strip b{display:block; color:#fff; font-size:15px; font-weight:700; letter-spacing:-.01em}
@@ -186,6 +188,40 @@ section{padding-block:var(--gap)}
 .fbio p{font-size:16px}
 .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:22px}
 .chip{border:1px solid var(--line); border-radius:999px; padding:7px 14px; font-size:13.5px; background:var(--surface)}
+
+/* ── oferta comercial ── */
+.offer{position:relative; isolation:isolate; background:var(--page); border:1px solid var(--line);
+  border-radius:18px; padding:30px; display:flex; flex-direction:column; gap:16px; transition:transform .25s ease}
+.offer::after{content:''; position:absolute; inset:0; border-radius:18px; padding:1.5px; pointer-events:none;
+  background:linear-gradient(130deg,var(--dorado),var(--turquesa));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); mask-composite:exclude;
+  opacity:0; transition:opacity .3s ease}
+.offer:hover{transform:translateY(-3px)} .offer:hover::after{opacity:1}
+.offer h3{font-size:19.5px; letter-spacing:-.02em}
+.offer dl{margin:0; display:grid; gap:13px}
+.offer dt{font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:4px}
+.offer dd{margin:0; font-size:15px}
+.offer .link{margin-top:auto; padding-top:8px; font-size:14.5px; font-weight:700; color:var(--ink);
+  text-decoration:none; display:inline-flex; align-items:center; gap:8px}
+.offer .link:hover{color:var(--turquesa)}
+
+/* ── cómo trabajamos ── */
+.steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr)); gap:22px}
+.step{border-top:3px solid var(--turquesa); padding-top:22px}
+.step:nth-child(2){border-top-color:var(--dorado)}
+.step:nth-child(3){border-top-color:var(--azul)}
+.step .num{font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:500; letter-spacing:.11em; color:var(--muted)}
+.step h3{margin:10px 0 9px; font-size:19px}
+.step p{font-size:15px}
+
+/* ── tipos de consulta ── */
+.inq{display:flex; gap:8px; flex-wrap:wrap; margin-top:20px}
+.inq button{font-family:inherit; font-size:13.5px; color:var(--body); background:var(--page);
+  border:1px solid var(--line); border-radius:999px; padding:9px 16px; cursor:pointer; text-align:left}
+.inq button:hover{border-color:var(--turquesa); color:var(--ink)}
+.inq button[aria-pressed="true"]{background:var(--azul); border-color:var(--azul); color:#fff}
 
 /* ── contacto ── */
 .contact{display:grid; grid-template-columns:1.1fr minmax(0,.9fr); gap:40px; align-items:start}
@@ -259,10 +295,11 @@ footer a:hover{color:var(--turquesa)}
   <div class="wrap hero-in">
     <span class="mono" data-i18n="hero.eyebrow">EXVO S.A.S. · Bogotá, Colombia</span>
     <h1 data-i18n="hero.title">Inteligencia más allá de las respuestas.</h1>
-    <p class="lead" data-i18n="hero.lead">Conectamos inteligencia artificial, tecnologías emergentes y experiencia empresarial para ayudar a las organizaciones a tomar mejores decisiones, transformar sus operaciones y descubrir nuevas oportunidades.</p>
+    <p class="hsub" data-i18n="hero.sub">Donde la experiencia empresarial se encuentra con la inteligencia artificial aplicada.</p>
+    <p class="lead" data-i18n="hero.lead">EXVO es una empresa colombiana de tecnología que conecta inteligencia empresarial, IA aplicada, dispositivos emergentes y alianzas estratégicas para abordar desafíos reales del negocio y desarrollar nuevas oportunidades.</p>
     <div class="actions">
       <a class="btn btn-1" href="#soluciones" data-i18n="cta.primary">Explorar soluciones</a>
-      <a class="btn btn-2" href="#alianzas" data-i18n="cta.secondary">Sé nuestro aliado</a>
+      <a class="btn btn-2" href="#alianzas" data-i18n="cta.secondary">Explorar una alianza</a>
     </div>
     <div class="pillars-strip" id="strip"></div>
   </div>
@@ -272,8 +309,8 @@ footer a:hover{color:var(--turquesa)}
   <div class="wrap">
     <div class="head">
       <span class="mono" data-i18n="about.kicker">Nosotros</span>
-      <h2 data-i18n="about.title">Una compañía de tecnología constituida para operar, no para anunciarse.</h2>
-      <p data-i18n="about.lead">EXVO S.A.S. es una compañía colombiana legalmente constituida que combina inteligencia empresarial, inteligencia artificial aplicada, dispositivos inteligentes y alianzas tecnológicas estratégicas.</p>
+      <h2 data-i18n="about.title">Tecnología con propósito empresarial.</h2>
+      <div id="about-intro" style="display:grid; gap:16px; margin-top:18px"></div>
     </div>
     <div class="grid g3" id="about-cards"></div>
     <div class="corp" id="corp"></div>
@@ -285,7 +322,7 @@ footer a:hover{color:var(--turquesa)}
     <div class="head">
       <span class="mono" data-i18n="eco.kicker">Nuestro ecosistema</span>
       <h2 data-i18n="eco.title">Cuatro pilares estratégicos.</h2>
-      <p data-i18n="eco.lead">Cada pilar resuelve un frente distinto y los cuatro se refuerzan entre sí. Pueden contratarse por separado o combinarse en un proyecto de transformación.</p>
+      <p data-i18n="eco.lead">Cada pilar responde a una necesidad distinta y los cuatro se refuerzan entre sí. Pueden abordarse por separado o combinarse en un proyecto de transformación.</p>
     </div>
     <div class="grid g2" id="pillars"></div>
   </div>
@@ -296,9 +333,31 @@ footer a:hover{color:var(--turquesa)}
     <div class="head">
       <span class="mono" data-i18n="sol.kicker">Soluciones de IA para empresas</span>
       <h2 data-i18n="sol.title">Dónde la inteligencia artificial resuelve un problema de negocio.</h2>
-      <p data-i18n="sol.lead">No partimos de la tecnología, partimos del problema. Estas son las áreas donde la IA aplicada produce un efecto medible sobre la operación.</p>
+      <p data-i18n="sol.lead">Partimos del problema, no de la tecnología. Estas son las áreas donde la IA aplicada puede generar valor medible sobre la operación.</p>
     </div>
     <div class="grid g3" id="solutions"></div>
+  </div>
+</section>
+
+<section class="alt" id="oferta">
+  <div class="wrap">
+    <div class="head">
+      <span class="mono" data-i18n="offer.kicker">Oferta comercial</span>
+      <h2 data-i18n="offer.title">Soluciones diseñadas a partir de necesidades empresariales.</h2>
+      <p data-i18n="offer.lead">Conozca cómo EXVO puede ayudarle a definir, desarrollar y evaluar soluciones tecnológicas alineadas con las prioridades de su organización.</p>
+    </div>
+    <div class="grid g3" id="offers"></div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="head">
+      <span class="mono" data-i18n="eng.kicker">Cómo trabajamos</span>
+      <h2 data-i18n="eng.title">Tres etapas, con criterios de avance en cada una.</h2>
+      <p data-i18n="eng.lead">Cada etapa concluye con entregables definidos y una evaluación de los criterios para avanzar. El alcance se define con el cliente y no se promete despliegue completo por anticipado.</p>
+    </div>
+    <div class="steps" id="engage"></div>
   </div>
 </section>
 
@@ -306,24 +365,24 @@ footer a:hover{color:var(--turquesa)}
   <div class="wrap">
     <div class="head">
       <span class="mono" data-i18n="dev.kicker">Dispositivos y agentes físicos</span>
-      <h2 data-i18n="dev.title">La inteligencia artificial sale de la pantalla.</h2>
-      <p data-i18n="dev.lead">EXVO desarrolla su capacidad comercial en una categoría emergente: dispositivos con inteligencia artificial integrada, para empresas, instituciones educativas y profesionales.</p>
+      <h2 data-i18n="dev.title">La inteligencia artificial toma nuevas formas.</h2>
+      <p data-i18n="dev.lead">EXVO desarrolla oportunidades para introducir dispositivos con IA y agentes físicos en Colombia, conectando nuevas tecnologías con la demanda de consumidores, aplicaciones empresariales e integración técnica.</p>
     </div>
     <div class="grid g3" id="devices"></div>
-    <p class="appbox" style="margin-top:22px" data-i18n-html="dev.note"></p>
+    <p class="appbox" style="margin-top:22px" data-i18n-html="dev.note">EXVO desarrolla actualmente relaciones con fabricantes y evalúa oportunidades de distribución. La disponibilidad de productos y los acuerdos comerciales autorizados se comunicarán una vez confirmados.</p>
   </div>
 </section>
 
 <section id="alianzas">
   <div class="wrap">
     <div class="head">
-      <span class="mono" data-i18n="part.kicker">Alianzas estratégicas</span>
-      <h2 data-i18n="part.title">Para fabricantes y plataformas que quieren entrar a Colombia.</h2>
-      <p data-i18n="part.lead">EXVO busca convertirse en el socio local de desarrollo de mercado, distribución e implementación para compañías de tecnología internacionales que miran a Colombia y a Latinoamérica.</p>
+      <span class="mono" data-i18n="part.kicker">Alianzas estratégicas y desarrollo de mercados</span>
+      <h2 data-i18n="part.title">Tecnología global. Oportunidades en el mercado colombiano.</h2>
+      <p data-i18n="part.lead">EXVO desarrolla relaciones con fabricantes internacionales y plataformas de IA interesados en explorar Colombia. Aportamos experiencia comercial y operativa para identificar oportunidades de mercado, impulsar la adopción tecnológica y evaluar posibles implementaciones empresariales.</p>
     </div>
     <div class="grid g2" id="partners"></div>
     <div class="actions" style="margin-top:34px">
-      <a class="btn btn-1" style="background:var(--azul); color:#fff" href="#contacto" data-i18n="part.cta">Ser aliado de EXVO</a>
+      <a class="btn btn-1" style="background:var(--azul); color:#fff" href="#contacto" data-i18n="part.cta">Explorar una alianza</a>
     </div>
   </div>
 </section>
@@ -331,9 +390,9 @@ footer a:hover{color:var(--turquesa)}
 <section class="alt" id="aplicaciones">
   <div class="wrap">
     <div class="head">
-      <span class="mono" data-i18n="app.kicker">Aplicaciones potenciales</span>
-      <h2 data-i18n="app.title">Cómo se vería esto en una organización.</h2>
-      <p data-i18n="app.lead">EXVO es una compañía recién constituida y no presenta casos de clientes. Lo que sigue son escenarios de aplicación, señalados como hipotéticos, para ilustrar el tipo de problema que abordamos.</p>
+      <span class="mono" data-i18n="app.kicker">Casos de uso ilustrativos</span>
+      <h2 data-i18n="app.title">Cómo la inteligencia artificial responde a desafíos reales.</h2>
+      <p data-i18n="app.lead">Escenarios ilustrativos sobre cómo la IA y los sistemas inteligentes pueden responder a desafíos reales de las organizaciones.</p>
     </div>
     <div class="grid g2" id="apps"></div>
   </div>
@@ -345,8 +404,8 @@ footer a:hover{color:var(--turquesa)}
     <div>
       <span class="mono" style="color:var(--muted); display:block; margin-bottom:12px" data-i18n="founder.kicker">Fundador</span>
       <h2>Jesús Daniel Lorduy Buelvas</h2>
-      <p class="frole" data-i18n="founder.role">Fundador de EXVO S.A.S.</p>
-      <p class="fpos" data-i18n="founder.pos">Liderazgo comercial · Operaciones de venta · Desarrollo de capacidades organizacionales · Inteligencia artificial aplicada</p>
+      <p class="frole" data-i18n="founder.role">Fundador, EXVO S.A.S.</p>
+      <p class="fpos" data-i18n="founder.pos">Operaciones comerciales · Gestión del desempeño · Desarrollo de capacidades organizacionales · Inteligencia artificial aplicada</p>
       <div class="fbio" id="fbio"></div>
       <div class="chips" id="fchips"></div>
     </div>
@@ -358,13 +417,14 @@ footer a:hover{color:var(--turquesa)}
     <div>
       <span class="mono" style="color:var(--muted); display:block; margin-bottom:14px" data-i18n="contact.kicker">Contacto</span>
       <h2 style="font-size:clamp(26px,3.2vw,38px)" data-i18n="contact.title">Hablemos de su proyecto.</h2>
-      <p style="margin-top:18px; max-width:56ch" data-i18n="contact.lead">Escríbanos indicando el tipo de consulta y respondemos con una propuesta de conversación inicial.</p>
-      <ul class="reasons" id="reasons" style="margin-top:24px"></ul>
+      <p style="margin-top:18px; max-width:56ch" data-i18n="contact.lead">Seleccione el tipo de consulta y el mensaje se prepara con el asunto correspondiente. Respondemos con una propuesta de conversación inicial.</p>
+      <span class="mono" style="color:var(--muted); display:block; margin-top:28px" data-i18n="contact.pick">Seleccione el tipo de consulta</span>
+      <div class="inq" id="inq" role="group" data-i18n-attr="aria-label|contact.pick" aria-label="Seleccione el tipo de consulta"></div>
     </div>
     <div class="cbox">
       <span class="mono" data-i18n="contact.boxkicker">Canales directos</span>
       <h3 data-i18n="contact.boxtitle">EXVO S.A.S.</h3>
-      <p data-i18n="contact.boxlead">Consultas empresariales, alianzas tecnológicas y distribución de producto.</p>
+      <p data-i18n="contact.boxlead">Consultas empresariales, dispositivos y distribución, alianzas internacionales y asuntos generales de negocio.</p>
       <div class="cfield">
         <span class="mono" data-i18n="contact.mail">Correo</span>
         <b><span id="mail">j.lorduy@uniandes.edu.co</span><button class="copy" type="button" id="copymail" data-i18n-attr="aria-label|a11y.copy" aria-label="Copiar el correo" data-i18n="contact.copy">Copiar</button></b>
@@ -379,7 +439,7 @@ footer a:hover{color:var(--turquesa)}
       </div>
       <div class="cbtns">
         <a class="btn btn-1" id="mailto" href="#" data-i18n="contact.write">Escribir un correo</a>
-        <a class="btn btn-2" id="walink" href="#" target="_blank" rel="noopener" data-i18n="contact.whatsapp">WhatsApp</a>
+        <a class="btn btn-2" id="walink" href="#" target="_blank" rel="noopener" data-i18n="contact.whatsapp">Contactar por WhatsApp</a>
       </div>
     </div>
   </div>
@@ -415,7 +475,7 @@ footer a:hover{color:var(--turquesa)}
         <h4 data-i18n="footer.legal">Información legal</h4>
         <ul>
           <li data-i18n="footer.inc">Constituida el 27 de octubre de 2026</li>
-          <li data-i18n="footer.privacy">Tratamiento de datos personales conforme a la Ley 1581 de 2012</li>
+          <li data-i18n="footer.privacy">Este sitio no recoge datos personales mediante formularios</li>
         </ul>
       </div>
     </div>
@@ -435,100 +495,116 @@ var I18N = {
   "a11y.copy":"Copiar el correo","a11y.photo":"Retrato de Jesús Daniel Lorduy Buelvas, fundador de EXVO",
   "nav.eco":"Ecosistema","nav.sol":"Soluciones","nav.dev":"Dispositivos","nav.part":"Alianzas",
   "nav.about":"Nosotros","nav.contact":"Contacto",
-  "cta.primary":"Explorar soluciones","cta.secondary":"Sé nuestro aliado",
+  "cta.primary":"Explorar soluciones","cta.secondary":"Explorar una alianza",
   "hero.eyebrow":"EXVO S.A.S. · Bogotá, Colombia","hero.title":"Inteligencia más allá de las respuestas.",
-  "hero.lead":"Conectamos inteligencia artificial, tecnologías emergentes y experiencia empresarial para ayudar a las organizaciones a tomar mejores decisiones, transformar sus operaciones y descubrir nuevas oportunidades.",
-  "about.kicker":"Nosotros","about.title":"Una compañía de tecnología constituida para operar, no para anunciarse.",
-  "about.lead":"EXVO S.A.S. es una compañía colombiana legalmente constituida que combina inteligencia empresarial, inteligencia artificial aplicada, dispositivos inteligentes y alianzas tecnológicas estratégicas.",
+  "hero.sub":"Donde la experiencia empresarial se encuentra con la inteligencia artificial aplicada.",
+  "hero.lead":"EXVO es una empresa colombiana de tecnología que conecta inteligencia empresarial, IA aplicada, dispositivos emergentes y alianzas estratégicas para abordar desafíos reales del negocio y desarrollar nuevas oportunidades.",
+  "about.kicker":"Nosotros","about.title":"Tecnología con propósito empresarial.",
   "eco.kicker":"Nuestro ecosistema","eco.title":"Cuatro pilares estratégicos.","eco.pillar":"PILAR",
-  "eco.lead":"Cada pilar resuelve un frente distinto y los cuatro se refuerzan entre sí. Pueden contratarse por separado o combinarse en un proyecto de transformación.",
+  "eco.lead":"Cada pilar responde a una necesidad distinta y los cuatro se refuerzan entre sí. Pueden abordarse por separado o combinarse en un proyecto de transformación.",
   "sol.kicker":"Soluciones de IA para empresas","sol.title":"Dónde la inteligencia artificial resuelve un problema de negocio.",
-  "sol.lead":"No partimos de la tecnología, partimos del problema. Estas son las áreas donde la IA aplicada produce un efecto medible sobre la operación.",
-  "dev.kicker":"Dispositivos y agentes físicos","dev.title":"La inteligencia artificial sale de la pantalla.",
-  "dev.lead":"EXVO desarrolla su capacidad comercial en una categoría emergente: dispositivos con inteligencia artificial integrada, para empresas, instituciones educativas y profesionales.",
-  "dev.note":"<b>Estado actual.</b> EXVO se encuentra explorando relaciones con fabricantes y acuerdos de distribución. No declaramos representación oficial, exclusividad, inventario disponible ni condición de distribuidor autorizado de ninguna marca. Cualquier acuerdo se comunicará cuando esté formalizado.",
-  "part.kicker":"Alianzas estratégicas","part.title":"Para fabricantes y plataformas que quieren entrar a Colombia.",
-  "part.lead":"EXVO busca convertirse en el socio local de desarrollo de mercado, distribución e implementación para compañías de tecnología internacionales que miran a Colombia y a Latinoamérica.",
-  "part.cta":"Ser aliado de EXVO",
-  "app.kicker":"Aplicaciones potenciales","app.title":"Cómo se vería esto en una organización.",
-  "app.lead":"EXVO es una compañía recién constituida y no presenta casos de clientes. Lo que sigue son escenarios de aplicación, señalados como hipotéticos, para ilustrar el tipo de problema que abordamos.",
-  "founder.kicker":"Fundador","founder.role":"Fundador de EXVO S.A.S.",
-  "founder.pos":"Liderazgo comercial · Operaciones de venta · Desarrollo de capacidades organizacionales · Inteligencia artificial aplicada",
+  "sol.lead":"Partimos del problema, no de la tecnología. Estas son las áreas donde la IA aplicada puede generar valor medible sobre la operación.",
+  "offer.kicker":"Oferta comercial","offer.title":"Soluciones diseñadas a partir de necesidades empresariales.",
+  "offer.lead":"Conozca cómo EXVO puede ayudarle a definir, desarrollar y evaluar soluciones tecnológicas alineadas con las prioridades de su organización.",
+  "offer.problem":"El problema","offer.approach":"El enfoque","offer.deliver":"Qué se entregaría",
+  "offer.cta":"Hablemos de su proyecto de IA",
+  "eng.kicker":"Cómo trabajamos","eng.title":"Tres etapas, con criterios de avance en cada una.",
+  "eng.lead":"Cada etapa concluye con entregables definidos y una evaluación de los criterios para avanzar. El alcance se define con el cliente y no se promete despliegue completo por anticipado.",
+  "dev.kicker":"Dispositivos y agentes físicos","dev.title":"La inteligencia artificial toma nuevas formas.",
+  "dev.lead":"EXVO desarrolla oportunidades para introducir dispositivos con IA y agentes físicos en Colombia, conectando nuevas tecnologías con la demanda de consumidores, aplicaciones empresariales e integración técnica.",
+  "dev.note":"EXVO desarrolla actualmente relaciones con fabricantes y evalúa oportunidades de distribución. La disponibilidad de productos y los acuerdos comerciales autorizados se comunicarán una vez confirmados.",
+  "part.kicker":"Alianzas estratégicas y desarrollo de mercados","part.title":"Tecnología global. Oportunidades en el mercado colombiano.",
+  "part.lead":"EXVO desarrolla relaciones con fabricantes internacionales y plataformas de IA interesados en explorar Colombia. Aportamos experiencia comercial y operativa para identificar oportunidades de mercado, impulsar la adopción tecnológica y evaluar posibles implementaciones empresariales.",
+  "part.cta":"Explorar una alianza",
+  "app.kicker":"Casos de uso ilustrativos","app.title":"Cómo la inteligencia artificial responde a desafíos reales.",
+  "app.lead":"Escenarios ilustrativos sobre cómo la IA y los sistemas inteligentes pueden responder a desafíos reales de las organizaciones.",
+  "founder.kicker":"Fundador","founder.role":"Fundador, EXVO S.A.S.",
+  "founder.pos":"Operaciones comerciales · Gestión del desempeño · Desarrollo de capacidades organizacionales · Inteligencia artificial aplicada",
   "contact.kicker":"Contacto","contact.title":"Hablemos de su proyecto.",
-  "contact.lead":"Escríbanos indicando el tipo de consulta y respondemos con una propuesta de conversación inicial.",
+  "contact.lead":"Seleccione el tipo de consulta y el mensaje se prepara con el asunto correspondiente. Respondemos con una propuesta de conversación inicial.",
+  "contact.pick":"Seleccione el tipo de consulta",
   "contact.boxkicker":"Canales directos","contact.boxtitle":"EXVO S.A.S.",
-  "contact.boxlead":"Consultas empresariales, alianzas tecnológicas y distribución de producto.",
+  "contact.boxlead":"Consultas empresariales, dispositivos y distribución, alianzas internacionales y asuntos generales de negocio.",
   "contact.mail":"Correo","contact.wa":"WhatsApp","contact.city":"Ciudad","contact.copy":"Copiar",
-  "contact.copied":"Copiado","contact.write":"Escribir un correo","contact.whatsapp":"WhatsApp",
-  "contact.subject":"Consulta empresarial — EXVO",
-  "contact.body":"Hola EXVO,\n\nTipo de consulta: (proyecto de IA / alianza tecnológica / distribución de producto / otra)\nOrganización:\nPaís:\nDescripción breve:\n\nGracias.",
-  "contact.wamsg":"Hola EXVO, quisiera conversar sobre un proyecto.",
+  "contact.copied":"Copiado","contact.write":"Escribir un correo","contact.whatsapp":"Contactar por WhatsApp",
   "footer.company":"Compañía","footer.eco":"Ecosistema","footer.contact":"Contacto","footer.legal":"Información legal",
   "footer.reg":"Matrícula mercantil 04171393","footer.write":"Escríbanos","footer.hours":"Lunes a viernes",
   "footer.inc":"Constituida el 27 de octubre de 2026",
-  "footer.privacy":"Tratamiento de datos personales conforme a la Ley 1581 de 2012",
+  "footer.privacy":"Este sitio no recoge datos personales mediante formularios",
   "footer.rights":"© 2026 EXVO S.A.S. Todos los derechos reservados.",
-  "meta.title":"EXVO S.A.S. — Inteligencia más allá de las respuestas",
-  "meta.desc":"Compañía colombiana de tecnología e inteligencia artificial aplicada. Inteligencia empresarial, dispositivos con IA, soluciones de transformación y alianzas tecnológicas estratégicas."
+  "meta.title":"EXVO S.A.S. — Inteligencia artificial aplicada para empresas en Colombia",
+  "meta.desc":"Empresa colombiana de tecnología e inteligencia artificial aplicada en Bogotá. Agentes de IA para empresas, automatización empresarial, inteligencia de negocio y distribución de dispositivos inteligentes."
  },
  en:{
   "a11y.skip":"Skip to content","a11y.lang":"Select language","a11y.menu":"Open menu",
   "a11y.copy":"Copy the email address","a11y.photo":"Portrait of Jesús Daniel Lorduy Buelvas, founder of EXVO",
   "nav.eco":"Ecosystem","nav.sol":"Solutions","nav.dev":"Devices","nav.part":"Partnerships",
   "nav.about":"About","nav.contact":"Contact",
-  "cta.primary":"Explore our solutions","cta.secondary":"Become an EXVO partner",
+  "cta.primary":"Explore Solutions","cta.secondary":"Explore a Partnership",
   "hero.eyebrow":"EXVO S.A.S. · Bogotá, Colombia","hero.title":"Intelligence Beyond Answers.",
-  "hero.lead":"We connect artificial intelligence, emerging technologies, and business expertise to help organizations make better decisions, transform operations, and unlock new opportunities.",
-  "about.kicker":"About EXVO","about.title":"A technology company incorporated to operate, not to advertise.",
-  "about.lead":"EXVO S.A.S. is a legally incorporated Colombian company combining enterprise intelligence, applied artificial intelligence, intelligent devices, and strategic technology partnerships.",
+  "hero.sub":"Where business expertise meets applied artificial intelligence.",
+  "hero.lead":"EXVO is a Colombian technology company connecting enterprise intelligence, applied AI, emerging hardware, and strategic partnerships to address real business challenges and create new opportunities.",
+  "about.kicker":"About EXVO","about.title":"Built for business. Driven by intelligence.",
   "eco.kicker":"Our ecosystem","eco.title":"Four strategic pillars.","eco.pillar":"PILLAR",
-  "eco.lead":"Each pillar addresses a different front, and the four reinforce one another. They can be engaged separately or combined into a transformation programme.",
+  "eco.lead":"Each pillar answers a different need, and the four reinforce one another. They can be addressed separately or combined into a transformation programme.",
   "sol.kicker":"Enterprise AI solutions","sol.title":"Where artificial intelligence solves a business problem.",
-  "sol.lead":"We do not start from the technology, we start from the problem. These are the areas where applied AI produces a measurable effect on the operation.",
-  "dev.kicker":"AI devices & physical agents","dev.title":"Artificial intelligence leaves the screen.",
-  "dev.lead":"EXVO is building its commercial capability in an emerging category: devices with embedded artificial intelligence, for companies, educational institutions, and professionals.",
-  "dev.note":"<b>Current status.</b> EXVO is exploring manufacturer relationships and distribution agreements. We claim no official representation, exclusivity, available inventory, or authorized reseller status for any brand. Any agreement will be announced once formalized.",
-  "part.kicker":"Strategic partnerships","part.title":"For manufacturers and platforms entering Colombia.",
-  "part.lead":"EXVO aims to become the local market development, distribution, and implementation partner for international technology companies looking at Colombia and Latin America.",
-  "part.cta":"Partner with EXVO",
-  "app.kicker":"Potential applications","app.title":"What this would look like inside an organization.",
-  "app.lead":"EXVO is a newly incorporated company and presents no client cases. What follows are application scenarios, clearly labelled as hypothetical, to illustrate the kind of problem we address.",
-  "founder.kicker":"Founder","founder.role":"Founder of EXVO S.A.S.",
-  "founder.pos":"Commercial leadership · Sales operations · Organizational capability development · Applied artificial intelligence",
+  "sol.lead":"We start from the problem, not the technology. These are the areas where applied AI can create measurable value across the operation.",
+  "offer.kicker":"Commercial offerings","offer.title":"Solutions Built Around Business Needs.",
+  "offer.lead":"Explore how EXVO can help scope, develop, and evaluate technology solutions aligned with your business priorities.",
+  "offer.problem":"The problem","offer.approach":"The approach","offer.deliver":"What would be delivered",
+  "offer.cta":"Discuss your AI project",
+  "eng.kicker":"How we engage","eng.title":"Three stages, each with its own criteria to advance.",
+  "eng.lead":"Each stage concludes with defined deliverables and a review of the criteria for moving forward. Scope is defined with the client, and full-scale deployment is never promised in advance.",
+  "dev.kicker":"AI devices & physical agents","dev.title":"Intelligence Beyond the Screen.",
+  "dev.lead":"EXVO is developing opportunities to introduce AI-powered devices and physical agents to Colombia, connecting emerging hardware with consumer demand, enterprise applications, and technical integration.",
+  "dev.note":"EXVO is currently developing manufacturer relationships and evaluating distribution opportunities. Product availability and authorized commercial arrangements will be communicated when confirmed.",
+  "part.kicker":"Strategic partnerships & market development","part.title":"Global Technology. Local Market Opportunity.",
+  "part.lead":"EXVO is developing relationships with international technology manufacturers and AI platforms interested in exploring Colombia. We bring commercial and operational expertise to market development, product adoption, and potential enterprise implementation opportunities.",
+  "part.cta":"Explore a Partnership",
+  "app.kicker":"Illustrative use cases","app.title":"How artificial intelligence addresses real challenges.",
+  "app.lead":"Illustrative scenarios showing how AI and intelligent systems could address real organizational challenges.",
+  "founder.kicker":"Founder","founder.role":"Founder, EXVO S.A.S.",
+  "founder.pos":"Commercial operations · Performance management · Organizational capability development · Applied artificial intelligence",
   "contact.kicker":"Contact","contact.title":"Let's talk about your project.",
-  "contact.lead":"Write to us stating the type of enquiry and we will respond with a proposal for an initial conversation.",
+  "contact.lead":"Select the type of enquiry and your message is prepared with the matching subject line. We respond with a proposal for an initial conversation.",
+  "contact.pick":"Select the type of enquiry",
   "contact.boxkicker":"Direct channels","contact.boxtitle":"EXVO S.A.S.",
-  "contact.boxlead":"Enterprise enquiries, technology partnerships, and product distribution.",
+  "contact.boxlead":"Enterprise enquiries, devices and distribution, international partnerships, and general business matters.",
   "contact.mail":"Email","contact.wa":"WhatsApp","contact.city":"City","contact.copy":"Copy",
-  "contact.copied":"Copied","contact.write":"Send an email","contact.whatsapp":"WhatsApp",
-  "contact.subject":"Business enquiry — EXVO",
-  "contact.body":"Hello EXVO,\n\nType of enquiry: (AI project / technology partnership / product distribution / other)\nOrganization:\nCountry:\nBrief description:\n\nThank you.",
-  "contact.wamsg":"Hello EXVO, I would like to discuss a project.",
+  "contact.copied":"Copied","contact.write":"Send an email","contact.whatsapp":"Contact via WhatsApp",
   "footer.company":"Company","footer.eco":"Ecosystem","footer.contact":"Contact","footer.legal":"Legal information",
   "footer.reg":"Commercial registration 04171393","footer.write":"Write to us","footer.hours":"Monday to Friday",
   "footer.inc":"Incorporated on 27 October 2026",
-  "footer.privacy":"Personal data processed under Colombian Law 1581 of 2012",
+  "footer.privacy":"This website does not collect personal data through forms",
   "footer.rights":"© 2026 EXVO S.A.S. All rights reserved.",
-  "meta.title":"EXVO S.A.S. — Intelligence Beyond Answers",
-  "meta.desc":"Colombian AI technology and business transformation company. Enterprise intelligence, AI devices, applied AI solutions, and strategic technology partnerships."
+  "meta.title":"EXVO S.A.S. — Enterprise AI Solutions & Technology Company in Colombia",
+  "meta.desc":"Colombian AI technology and business transformation company based in Bogotá. Enterprise AI agents, workflow automation, business intelligence, and AI hardware distribution."
  }
 };
 
 /* ── Bloques repetidos, también bilingües desde una sola fuente ── */
 var DATA = {
  strip:{
-  es:[["EXVO Intelligence","Inteligencia para decidir"],["EXVO Hardware","Dispositivos con IA"],
-      ["EXVO Solutions","IA aplicada al negocio"],["EXVO Partnerships","Alianzas y mercado"]],
-  en:[["EXVO Intelligence","Intelligence for decisions"],["EXVO Hardware","AI-powered devices"],
-      ["EXVO Solutions","Applied AI for business"],["EXVO Partnerships","Alliances and market"]]
+  es:[["EXVO Intelligence","Inteligencia para decisiones estratégicas"],["EXVO Hardware","Dispositivos inteligentes"],
+      ["EXVO Solutions","IA aplicada al negocio"],["EXVO Partnerships","Alianzas estratégicas y desarrollo de mercado"]],
+  en:[["EXVO Intelligence","Intelligence for Better Decisions"],["EXVO Hardware","AI Devices & Physical Agents"],
+      ["EXVO Solutions","Applied AI for Business"],["EXVO Partnerships","Strategic Alliances & Market Development"]]
+ },
+ aboutIntro:{
+  es:["EXVO S.A.S. es una empresa colombiana de tecnología que conecta inteligencia artificial, experiencia empresarial y tecnologías emergentes con oportunidades de aplicación práctica.",
+      "Nuestro enfoque combina experiencia comercial y operativa con integración tecnológica, diseño de soluciones y colaboración estratégica.",
+      "Buscamos conectar los objetivos del negocio con las capacidades necesarias para adoptar tecnología de manera efectiva y evaluar su contribución."],
+  en:["EXVO S.A.S. is a Colombian technology company established to connect artificial intelligence, business expertise, and emerging technologies with practical opportunities.",
+      "Our approach combines commercial and operational experience with technology integration, solution design, and strategic collaboration.",
+      "We work to connect business objectives with the capabilities needed to adopt technology effectively and measure its contribution."]
  },
  about:{
   es:[["Qué hacemos","EXVO integra inteligencia artificial en los procesos de negocio de sus clientes y desarrolla la capacidad interna que esa integración necesita para sostenerse en el tiempo."],
       ["Cómo trabajamos","Cada proyecto comienza con un diagnóstico del problema de negocio y avanza por fases: diseño de la solución, implementación por etapas y medición contra los indicadores que la organización ya utiliza."],
-      ["Nuestra práctica","Nuestra práctica combina liderazgo humano, experiencia operativa y capacidad técnica. Esa combinación determina que cada implementación tecnológica responda a un objetivo de negocio definido."]],
-  en:[["What we do","EXVO integrates artificial intelligence into its clients' business processes and develops the internal capability that integration requires to hold over time."],
-      ["How we work","Every engagement begins with a diagnosis of the business problem and advances in phases: solution design, staged implementation, and measurement against the indicators the organization already uses."],
-      ["Our practice","Our practice combines human leadership, operational experience, and technical capability. That combination ensures every technology implementation answers to a defined business objective."]]
+      ["Nuestro enfoque","Combinamos liderazgo humano, experiencia operativa y capacidad técnica. Esa combinación ayuda a alinear cada implementación tecnológica con un objetivo de negocio definido."]],
+  en:[["What We Do","EXVO integrates artificial intelligence into its clients' business processes and develops the internal capability that integration requires to hold over time."],
+      ["How We Work","Every engagement begins with a diagnosis of the business problem and advances in phases: solution design, staged implementation, and measurement against the indicators the organization already uses."],
+      ["Our Approach","We combine human leadership, operational experience, and technical capability. That combination helps align every technology implementation with a defined business objective."]]
  },
  corp:{
   es:[["Razón social","EXVO S.A.S."],["NIT","902120380-0"],["Matrícula mercantil","04171393"],
@@ -538,97 +614,186 @@ var DATA = {
  },
  pillars:{
   es:[
-   ["01","EXVO Intelligence","Inteligencia empresarial para decidir",
-    "Transformamos la información dispersa de una organización en inteligencia accionable: qué está pasando, por qué, y qué conviene hacer.",
-    ["Soporte a la decisión y análisis asistido por IA","Integración de datos y analítica","Tableros ejecutivos y análisis de escenarios","Inteligencia del conocimiento interno","Integración de plataformas existentes con IA"]],
-   ["02","EXVO Hardware","Dispositivos de IA y agentes físicos",
-    "Exploramos la comercialización, distribución e integración de la nueva generación de dispositivos con inteligencia artificial, en canales B2B y B2C.",
-    ["Agentes personales y compañeros físicos de IA","Dispositivos de cómputo con agentes","Vestibles y gafas con IA","Traductores inteligentes","Hardware para desarrollo con IA"]],
-   ["03","EXVO Solutions","IA aplicada y transformación del negocio",
+   ["01","EXVO Intelligence","Inteligencia empresarial y apoyo a decisiones",
+    "Exploramos y desarrollamos sistemas inteligentes que conectan datos empresariales, capacidades analíticas y razonamiento asistido por IA para ayudar a los líderes a comprender el desempeño, evaluar escenarios e identificar oportunidades.",
+    ["Integración de datos empresariales","Análisis de negocio asistido por IA","Tableros ejecutivos y análisis de escenarios","Inteligencia del conocimiento organizacional","Integración de IA con plataformas existentes"]],
+   ["02","EXVO Hardware","Dispositivos inteligentes y agentes físicos de IA",
+    "Desarrollamos oportunidades para introducir hardware emergente de inteligencia artificial en el mercado colombiano, mediante alianzas comerciales e implementación práctica.",
+    ["Agentes físicos y dispositivos personales de IA","Vestibles y gafas con IA","Dispositivos inteligentes de traducción","Mini computadores con agentes integrados","Hardware para desarrollo con IA"]],
+   ["03","EXVO Solutions","Inteligencia artificial aplicada y transformación empresarial",
     "Diseñamos, implementamos y acompañamos soluciones que combinan inteligencia artificial con experiencia operativa y comercial.",
-    ["Agentes de IA para ventas, servicio y conocimiento","IA conversacional y de voz","Automatización de flujos e integración con CRM","Desarrollo de liderazgo y capacidades","Transformación del desempeño comercial"]],
-   ["04","EXVO Partnerships","Alianzas tecnológicas y desarrollo de mercado",
-    "Construimos relaciones con fabricantes, plataformas de software e innovadores de IA que buscan entrar o crecer en Colombia y Latinoamérica.",
-    ["Distribución internacional y reventa","Relaciones OEM y ODM","Tecnología de marca blanca","Entrada a mercado en Colombia y LATAM","Desarrollo de canal B2B y B2C"]]],
+    ["Agentes de IA para empresas","Automatización inteligente de flujos de trabajo","IA conversacional y de voz","Integración con CRM y sistemas empresariales","Asistentes de conocimiento organizacional","Transformación comercial y operativa"]],
+   ["04","EXVO Partnerships","Alianzas estratégicas y desarrollo de mercados",
+    "Desarrollamos relaciones con fabricantes internacionales, proveedores de software de IA y equipos de alianzas comerciales que evalúan entrar al mercado colombiano.",
+    ["Reventa autorizada y distribución","Integración de sistemas e implementación","Software de marca blanca","Oportunidades OEM y ODM","Pilotos comerciales en clientes empresariales"]]],
   en:[
-   ["01","EXVO Intelligence","Enterprise decision intelligence",
-    "We turn an organization's scattered information into actionable intelligence: what is happening, why, and what should be done about it.",
-    ["Decision support and AI-assisted business analysis","Data integration and analytics","Executive dashboards and scenario analysis","Internal knowledge intelligence","Integration of existing platforms with AI"]],
-   ["02","EXVO Hardware","AI devices and physical agents",
-    "We are exploring the commercialization, distribution, and integration of the next generation of AI-powered devices, across B2B and B2C channels.",
-    ["Personal AI agents and physical companions","Agent-powered computing devices","AI wearables and glasses","Intelligent translation devices","AI development hardware"]],
-   ["03","EXVO Solutions","Applied AI and business transformation",
+   ["01","EXVO Intelligence","Enterprise Intelligence & Decision Support",
+    "We explore and develop intelligent systems that connect business data, analytical capabilities, and AI-assisted reasoning to help leaders understand performance, evaluate scenarios, and identify opportunities.",
+    ["Enterprise data integration","AI-assisted business analysis","Executive dashboards and scenario analysis","Enterprise knowledge intelligence","Integration of AI with existing business platforms"]],
+   ["02","EXVO Hardware","AI Devices & Physical Agents",
+    "We are developing opportunities to introduce emerging AI hardware into the Colombian market through commercial partnerships and practical implementation.",
+    ["Physical AI agents and personal AI devices","AI wearables and glasses","Intelligent translation devices","Agent-powered mini computers","AI developer hardware"]],
+   ["03","EXVO Solutions","Applied AI & Business Transformation",
     "We design, implement, and support solutions that combine artificial intelligence with operational and commercial expertise.",
-    ["AI agents for sales, service, and knowledge","Conversational and voice AI","Workflow automation and CRM integration","Leadership and capability development","Sales performance transformation"]],
-   ["04","EXVO Partnerships","Technology partnerships and market development",
-    "We build relationships with manufacturers, software platforms, and AI innovators seeking to enter or grow in Colombia and Latin America.",
-    ["International distribution and reselling","OEM and ODM relationships","White-label technology","Market entry in Colombia and LATAM","B2B and B2C channel development"]]]
+    ["Enterprise AI agents","Intelligent workflow automation","Conversational and voice AI","CRM and enterprise systems integration","Organizational knowledge assistants","Commercial and operational transformation"]],
+   ["04","EXVO Partnerships","Strategic Partnerships & Market Development",
+    "We are developing relationships with international manufacturers, AI software vendors, and commercial partnership teams evaluating entry into the Colombian market.",
+    ["Authorized reselling and distribution","System integration and implementation","White-label software","OEM and ODM opportunities","Enterprise go-to-market pilots"]]]
  },
  solutions:{
-  es:[["Ventas","Agentes de IA que preparan la conversación comercial, califican oportunidades y mantienen el seguimiento al día."],
+  es:[["Ventas","Agentes que apoyan la preparación de la conversación comercial, la calificación de oportunidades y el seguimiento."],
       ["Operaciones","Automatización de procesos administrativos y de reportes que hoy consumen horas de trabajo manual."],
-      ["Conocimiento","Asistentes que responden sobre la documentación real de la organización, en lugar de obligar a buscarla."],
-      ["Experiencia de cliente","Atención conversacional y de voz que resuelve, escala cuando corresponde y deja registro."],
-      ["Formación","Desarrollo de capacidades y de liderazgo apoyado con herramientas de práctica y seguimiento."],
-      ["Decisión","Integración de datos y analítica para que la dirección decida con evidencia y no con percepción."]],
-  en:[["Sales","AI agents that prepare the commercial conversation, qualify opportunities, and keep follow-up current."],
+      ["Conocimiento","Asistentes que consultan la documentación de la organización en lugar de obligar a buscarla."],
+      ["Experiencia de cliente","Atención conversacional y de voz, con escalamiento a una persona en los casos que requieren intervención humana."],
+      ["Formación","Desarrollo de capacidades y de liderazgo, con herramientas de práctica y seguimiento."],
+      ["Decisión","Integración de datos y analítica para que la dirección evalúe con información oportuna."]],
+  en:[["Sales","Agents that support commercial conversation preparation, opportunity qualification, and follow-up."],
       ["Operations","Automation of administrative and reporting processes that today consume hours of manual work."],
-      ["Knowledge","Assistants that answer from the organization's own documentation instead of forcing people to search it."],
-      ["Customer experience","Conversational and voice support that resolves, escalates when appropriate, and leaves a record."],
-      ["Training","Capability and leadership development supported by practice and follow-up tools."],
-      ["Decision-making","Data integration and analytics so leadership decides on evidence rather than perception."]]
+      ["Knowledge","Assistants that query the organization's documentation instead of forcing people to search it."],
+      ["Customer experience","Conversational and voice support, with escalation to a person for cases that require human judgement."],
+      ["Training","Capability and leadership development, supported by practice and follow-up tools."],
+      ["Decision-making","Data integration and analytics so leadership can evaluate with timely information."]]
+ },
+ offers:{
+  es:[
+   ["Descubrimiento y piloto de agentes de IA",
+    "La organización intuye que un agente podría ayudar, pero no sabe en qué proceso ni con qué alcance.",
+    "Identificamos los procesos candidatos, evaluamos viabilidad técnica sobre los sistemas existentes y acotamos un piloto controlado.",
+    "Un piloto funcional de un agente de IA sobre un proceso de negocio definido, sujeto a viabilidad técnica y a criterios de aceptación acordados."],
+   ["Asistente de conocimiento organizacional",
+    "La documentación existe, pero está dispersa y las personas no la encuentran cuando la necesitan.",
+    "Conectamos las fuentes de conocimiento aprobadas y configuramos un asistente con los controles de acceso adecuados y referencia a la fuente de cada respuesta.",
+    "Un asistente consultable por el equipo, con las fuentes delimitadas y la trazabilidad de cada respuesta."],
+   ["Automatización de flujos e integración",
+    "Tareas administrativas y reportes se construyen a mano cada semana.",
+    "Mapeamos el flujo actual, definimos qué puede automatizarse primero e integramos con las herramientas que la organización ya usa.",
+    "Un flujo automatizado, probado y documentado, de acuerdo con el alcance definido para el proyecto."],
+   ["Inteligencia de negocio y apoyo a decisiones",
+    "Los datos viven en varios sistemas y el informe de dirección se consolida manualmente.",
+    "Integramos las fuentes, definimos los indicadores con la organización y construimos la vista que la dirección necesita.",
+    "Un tablero en operación y el proceso de actualización definido."],
+   ["Transformación del desempeño comercial",
+    "El equipo comercial trabaja más y los indicadores no se mueven.",
+    "Diagnosticamos la operación y las prácticas de liderazgo, y desarrollamos la capacidad de los líderes con acompañamiento.",
+    "Un plan estructurado de mejora del liderazgo, con acompañamiento en su implementación e indicadores de desempeño acordados con el cliente."],
+   ["Evaluación e integración de hardware con IA",
+    "La organización quiere valorar dispositivos con IA antes de comprometer una compra.",
+    "Definimos los casos de uso, evaluamos los dispositivos pertinentes y probamos su integración en el contexto real.",
+    "Un informe de evaluación y, cuando corresponda, una prueba de concepto en el entorno del cliente."]],
+  en:[
+   ["AI Agent Discovery & Pilot",
+    "The organization senses an agent could help, but does not know in which process or at what scope.",
+    "We identify candidate processes, assess technical feasibility against existing systems, and scope a controlled pilot.",
+    "A working pilot of an AI agent for a defined business process, subject to technical feasibility and agreed acceptance criteria."],
+   ["Enterprise Knowledge Assistant",
+    "The documentation exists but is scattered, and people cannot find it when they need it.",
+    "We connect approved knowledge sources and configure an assistant with appropriate access controls and source references.",
+    "An assistant the team can query, with bounded sources and traceability for every answer."],
+   ["Workflow Automation & Integration",
+    "Administrative tasks and reports are assembled by hand every week.",
+    "We map the current workflow, define what can be automated first, and integrate with the tools the organization already uses.",
+    "A tested, documented automated workflow delivered according to the agreed project scope."],
+   ["Business Intelligence & Decision Support",
+    "Data lives across several systems and the leadership report is consolidated manually.",
+    "We integrate the sources, define the indicators with the organization, and build the view leadership needs.",
+    "A dashboard in operation and a defined update process."],
+   ["Commercial Performance Transformation",
+    "The commercial team works harder and the indicators do not move.",
+    "We diagnose the operation and leadership practices, then develop leadership capability with hands-on support.",
+    "A structured leadership improvement plan, supported by implementation guidance and performance indicators agreed with the client."],
+   ["AI Hardware Evaluation & Integration",
+    "The organization wants to assess AI devices before committing to a purchase.",
+    "We define the use cases, evaluate the relevant devices, and test their integration in the real context.",
+    "An evaluation report and, where appropriate, a proof of concept in the client's environment."]]
+ },
+ engage:{
+  es:[["Diagnosticar y evaluar","Comprendemos el problema de negocio, los procesos actuales, la información disponible, los requisitos técnicos y los criterios de éxito."],
+      ["Probar e implementar","Diseñamos una solución acotada, validamos su viabilidad técnica, ejecutamos un piloto controlado y preparamos la implementación cuando corresponde."],
+      ["Medir y evolucionar","Evaluamos los resultados contra los indicadores acordados, identificamos los ajustes necesarios y determinamos si la solución está lista para escalar."]],
+  en:[["Discover & Assess","We understand the business problem, current processes, available information, technical requirements, and success criteria."],
+      ["Pilot & Implement","We design a defined solution, validate technical feasibility, run a controlled pilot, and prepare implementation where appropriate."],
+      ["Measure & Evolve","We evaluate outcomes against the agreed indicators, identify the adjustments needed, and determine whether the solution is ready to scale."]]
  },
  devices:{
-  es:[["Empresas","Equipos de innovación, áreas comerciales y operaciones que quieren evaluar dispositivos con IA en su contexto real."],
+  es:[["Empresas","Equipos de innovación y áreas de operación que quieren evaluar dispositivos con IA en su contexto real antes de adoptarlos."],
       ["Instituciones educativas","Universidades y colegios que exploran tecnología de agentes para aprendizaje, accesibilidad e investigación."],
-      ["Profesionales","Personas y equipos que buscan productividad asistida por IA en su trabajo diario."]],
-  en:[["Companies","Innovation teams, commercial and operations areas looking to evaluate AI devices in their real context."],
+      ["Profesionales y creadores","Personas y equipos que buscan productividad asistida por IA en su trabajo diario."]],
+  en:[["Companies","Innovation teams and operating areas looking to evaluate AI devices in their real context before adopting them."],
       ["Educational institutions","Universities and schools exploring agent technology for learning, accessibility, and research."],
-      ["Professionals","Individuals and teams seeking AI-assisted productivity in their daily work."]]
+      ["Professionals and creators","Individuals and teams seeking AI-assisted productivity in their daily work."]]
  },
  partners:{
-  es:[["Qué aporta EXVO","Conocimiento del mercado colombiano, capacidad de implementación técnica, experiencia comercial en equipos grandes y habilitación de canal.",
-       ["Desarrollo de mercado en Colombia","Canales B2B y B2C","Integración empresarial","Educación de producto y habilitación comercial"]],
-      ["Qué buscamos","Relaciones formales con fabricantes y plataformas, en las modalidades que tengan sentido para cada caso.",
-       ["Reventa y distribución","Implementación local","Marca blanca","Acuerdos OEM y ODM"]]],
-  en:[["What EXVO brings","Knowledge of the Colombian market, technical implementation capability, commercial experience with large teams, and channel enablement.",
-       ["Market development in Colombia","B2B and B2C channels","Enterprise integration","Product education and commercial enablement"]],
-      ["What we are looking for","Formal relationships with manufacturers and platforms, in whichever model fits each case.",
-       ["Reselling and distribution","Local implementation","White-label","OEM and ODM agreements"]]]
+  es:[["Qué aporta EXVO","Conocimiento del mercado colombiano, capacidad de implementación técnica y experiencia comercial en operaciones de venta.",
+       ["Exploración del mercado colombiano","Identificación de oportunidades de negocio","Desarrollo de clientes B2B y estrategia de canal B2C","Educación de producto y demostraciones","Validación de casos de uso empresariales","Soporte local de implementación"]],
+      ["Modelos en exploración","Relaciones formales con fabricantes y plataformas, en la modalidad que corresponda a cada caso.",
+       ["Reventa autorizada y distribución","Integración de sistemas","Implementación tecnológica","Software de marca blanca","Oportunidades OEM y ODM","Pilotos comerciales en clientes"]]],
+  en:[["What EXVO brings","Knowledge of the Colombian market, technical implementation capability, and commercial experience in sales operations.",
+       ["Colombia market exploration","Business opportunity identification","B2B customer development and B2C channel strategy","Product education and demonstrations","Enterprise use-case validation","Local implementation support"]],
+      ["Models under exploration","Formal relationships with manufacturers and platforms, in whichever model fits each case.",
+       ["Authorized reselling and distribution","System integration","Technology implementation","White-label software","OEM and ODM opportunities","Enterprise go-to-market pilots"]]]
  },
  apps:{
-  es:[["Operación comercial","Un equipo de ventas con alta rotación pierde el historial de cada cuenta cuando alguien se va. Un asistente sobre el CRM permite que quien llega retome la relación sin empezar de cero."],
-      ["Servicio al cliente","Una operación recibe las mismas cincuenta preguntas cada semana. Un agente conversacional las resuelve y deja a las personas el caso que de verdad necesita criterio."],
-      ["Dirección","Los datos existen en cinco sistemas distintos y el informe mensual se arma a mano. La integración y el tablero convierten tres días de trabajo en una consulta."],
-      ["Institución educativa","El acompañamiento a los docentes depende de la memoria de cada coordinador. Un sistema de registro y seguimiento lo vuelve continuidad en lugar de buena voluntad."]],
-  en:[["Commercial operation","A sales team with high turnover loses each account's history when someone leaves. An assistant over the CRM lets the next person resume the relationship without starting from zero."],
-      ["Customer service","An operation receives the same fifty questions every week. A conversational agent resolves them and leaves people with the cases that genuinely require judgement."],
-      ["Executive leadership","Data lives in five different systems and the monthly report is assembled by hand. Integration and a dashboard turn three days of work into a query."],
-      ["Educational institution","Support for teachers depends on each coordinator's memory. A record and follow-up system turns it into continuity rather than goodwill."]]
+  es:[["Operaciones comerciales","La integración de los datos de varios sistemas puede reducir el trabajo manual de consolidación y dar a los líderes comerciales acceso oportuno a la información de su operación."],
+      ["Experiencia de cliente","Un agente conversacional puede atender las consultas repetitivas de alto volumen y derivar a una persona los casos que requieren intervención humana."],
+      ["Inteligencia directiva","La consolidación automática de indicadores puede sustituir la elaboración manual del informe de dirección y acortar el tiempo entre el dato y la decisión."],
+      ["Educación y aprendizaje","Un asistente sobre la documentación institucional puede dar continuidad al conocimiento organizacional cuando cambian los equipos o los responsables de área."]],
+  en:[["Commercial Operations","Unifying operational data from multiple systems can reduce manual reporting and give commercial leaders faster access to business insights."],
+      ["Customer Experience","A conversational agent can handle high-volume repetitive enquiries and route to a person the cases that require human judgement."],
+      ["Executive Intelligence","Automated indicator consolidation can replace the manual preparation of the leadership report and shorten the time between data and decision."],
+      ["Education & Learning","An assistant over institutional documentation can sustain organizational knowledge when teams or area leads change."]]
  },
  fbio:{
-  es:["Más de diez años de trayectoria profesional, con más de ocho liderando desempeño comercial. Ha dirigido la estrategia de ventas y la habilitación comercial de más de trece equipos que atienden cuentas empresariales globales, con responsabilidad directa sobre pronósticos, metas de conversión e indicadores de ingreso.",
-      "Desplegó analítica de comportamiento con inteligencia artificial para identificar las conductas comerciales de mayor impacto y dirigir intervenciones sobre ellas. Lideró el despliegue internacional del modelo operativo comercial en Filipinas, construyendo el equipo y formando al liderazgo local desde el lanzamiento.",
-      "Ingeniero, con estudios de posgrado en Inteligencia Artificial en la Universidad de los Andes y formación en alta gerencia. Certificación Lean Six Sigma. Bilingüe en español e inglés.",
-      "EXVO nace de esa combinación: comprender cómo funcionan las organizaciones, identificar qué limita sus resultados y conectar estrategia, talento, procesos e inteligencia artificial."],
-  en:["Over ten years of professional experience, more than eight of them leading commercial performance. He has directed sales strategy and commercial enablement across more than thirteen teams serving global enterprise accounts, with direct accountability for forecasts, conversion targets, and revenue indicators.",
-      "He deployed AI-powered behavioural analytics to identify the highest-impact commercial behaviours and target interventions accordingly. He led the international deployment of the commercial operating model in the Philippines, building the team and training local leadership from launch.",
-      "Engineer, with graduate-level studies in Artificial Intelligence at Universidad de los Andes and executive management training. Lean Six Sigma certified. Fully bilingual in Spanish and English.",
-      "EXVO grew out of that combination: understanding how organizations work, identifying what limits their results, and connecting strategy, talent, processes, and artificial intelligence."]
+  es:["Ingeniero y líder empresarial con más de ocho años de trayectoria en operaciones comerciales, gestión del desempeño, desarrollo de capacidades organizacionales y transformación apoyada en tecnología.",
+      "Su experiencia incluye el liderazgo directo de equipos comerciales y el acompañamiento transversal de más de trece equipos y más de cincuenta profesionales, el desarrollo de líderes operativos, la gestión de indicadores de desempeño relacionados con conversión e ingresos, y el diseño de estrategias para fortalecer la ejecución del negocio.",
+      "Su trayectoria internacional comprende el despliegue de prácticas operativas comerciales y de iniciativas de desarrollo de liderazgo en Filipinas.",
+      "Ha aplicado analítica de comportamiento, inteligencia artificial y automatización para identificar oportunidades de mejora, fortalecer la toma de decisiones y desarrollar capacidades organizacionales.",
+      "Su formación combina ingeniería, estudios de maestría finalizados en Inteligencia Artificial en la Universidad de los Andes, metodologías de mejora continua con certificación Lean Six Sigma Green Belt, y competencia profesional en español e inglés.",
+      "EXVO nace de esa combinación: comprender cómo funcionan las organizaciones, identificar los desafíos que limitan sus resultados y conectar estrategia, tecnología y ejecución para generar valor empresarial."],
+  en:["An engineer and business leader with more than eight years of professional experience spanning commercial operations, sales performance, organizational capability development, and technology-driven transformation.",
+      "His background includes the direct leadership of commercial teams and cross-functional support across more than thirteen teams and over fifty professionals, developing operational leaders, managing conversion and revenue-related performance indicators, and designing strategies to strengthen business execution.",
+      "His international experience includes the deployment of commercial operating practices and leadership development initiatives in the Philippines.",
+      "He has applied behavioural analytics, artificial intelligence, and automation to identify performance opportunities, improve decision-making, and develop organizational capabilities.",
+      "His background combines engineering, completed graduate studies in Artificial Intelligence at Universidad de los Andes, continuous improvement methodologies with Lean Six Sigma Green Belt certification, and professional fluency in Spanish and English.",
+      "EXVO reflects that combination of experience: understanding how organizations operate, identifying the challenges limiting their performance, and connecting strategy, technology, and execution to create business value."]
  },
  fchips:{
-  es:["Liderazgo comercial","Sales Enablement","Desempeño de ingresos","Desarrollo de capacidades","Operaciones","Inteligencia artificial aplicada"],
-  en:["Commercial leadership","Sales enablement","Revenue performance","Capability development","Business operations","Applied artificial intelligence"]
+  es:["Liderazgo comercial","Sales Enablement","Operaciones de venta","Gestión del desempeño","Desarrollo de capacidades","Inteligencia artificial aplicada"],
+  en:["Commercial leadership","Sales enablement","Sales operations","Performance management","Capability development","Applied artificial intelligence"]
  },
- reasons:{
-  es:["Proyectos de inteligencia artificial para empresas","Alianzas tecnológicas y desarrollo de mercado","Distribución de producto y acuerdos de reventa","Colaboración estratégica e institucional","Consultas generales de negocio"],
-  en:["Enterprise artificial intelligence projects","Technology partnerships and market development","Product distribution and reseller agreements","Strategic and institutional collaboration","General business enquiries"]
+ inquiry:{
+  es:[
+   ["Soluciones de IA para empresas","Consulta — Soluciones de IA para empresas | EXVO",
+    "Hola EXVO,\n\nTipo de consulta: Soluciones de IA para empresas\nOrganización:\nSector:\nProblema que queremos resolver:\nSistemas que usamos hoy:\n\nQuedo atento a su respuesta.",
+    "Hola EXVO, quisiera conversar sobre una solución de inteligencia artificial para mi empresa."],
+   ["Dispositivos y distribución","Consulta — Dispositivos de IA y distribución | EXVO",
+    "Hola EXVO,\n\nTipo de consulta: Dispositivos de IA y distribución\nOrganización:\nDispositivos de interés:\nUso previsto:\n\nQuedo atento a su respuesta.",
+    "Hola EXVO, quisiera información sobre dispositivos de inteligencia artificial."],
+   ["Alianzas internacionales","Partnership enquiry | EXVO S.A.S. Colombia",
+    "Hello EXVO,\n\nEnquiry type: International partnership\nCompany:\nCountry:\nProduct or platform:\nPartnership model of interest (reselling, distribution, integration, white-label, OEM/ODM):\n\nLooking forward to your reply.",
+    "Hello EXVO, I would like to explore a partnership opportunity in Colombia."],
+   ["Consulta general","Consulta general | EXVO",
+    "Hola EXVO,\n\nTipo de consulta: General\nOrganización:\nMotivo:\n\nQuedo atento a su respuesta.",
+    "Hola EXVO, quisiera hacer una consulta."]],
+  en:[
+   ["Enterprise AI solutions","Enquiry — Enterprise AI solutions | EXVO",
+    "Hello EXVO,\n\nEnquiry type: Enterprise AI solutions\nOrganization:\nIndustry:\nProblem we want to solve:\nSystems we use today:\n\nLooking forward to your reply.",
+    "Hello EXVO, I would like to discuss an artificial intelligence solution for my company."],
+   ["AI devices & distribution","Enquiry — AI devices and distribution | EXVO",
+    "Hello EXVO,\n\nEnquiry type: AI devices and distribution\nOrganization:\nDevices of interest:\nIntended use:\n\nLooking forward to your reply.",
+    "Hello EXVO, I would like information about AI devices."],
+   ["International partnerships","Partnership enquiry | EXVO S.A.S. Colombia",
+    "Hello EXVO,\n\nEnquiry type: International partnership\nCompany:\nCountry:\nProduct or platform:\nPartnership model of interest (reselling, distribution, integration, white-label, OEM/ODM):\n\nLooking forward to your reply.",
+    "Hello EXVO, I would like to explore a partnership opportunity in Colombia."],
+   ["General business enquiry","General enquiry | EXVO",
+    "Hello EXVO,\n\nEnquiry type: General\nOrganization:\nReason:\n\nLooking forward to your reply.",
+    "Hello EXVO, I would like to make an enquiry."]]
  }
 };
 
 (function(){
  var LANG_KEY='exvo-lang', FALLBACK='es';   // fallback documentado: español (mercado inicial)
  var lang = FALLBACK;
+ var inqSel = 0;                            // tipo de consulta seleccionado para el correo
 
  function t(k){ return (I18N[lang] && I18N[lang][k]) || I18N[FALLBACK][k] || k; }
  function el(tag,cls,html){ var n=document.createElement(tag); if(cls)n.className=cls; if(html!=null)n.innerHTML=html; return n; }
@@ -641,6 +806,8 @@ var DATA = {
   DATA.strip[lang].forEach(function(r){ strip.appendChild(el('div',null,'<b>'+esc(r[0])+'</b><span>'+esc(r[1])+'</span>')); });
 
   // nosotros
+  var ai=document.getElementById('about-intro'); ai.innerHTML='';
+  DATA.aboutIntro[lang].forEach(function(x){ ai.appendChild(el('p',null,esc(x))); });
   var ab=document.getElementById('about-cards'); ab.innerHTML='';
   DATA.about[lang].forEach(function(r,i){
    ab.appendChild(el('article','card','<span class="num">0'+(i+1)+'</span><h3>'+esc(r[0])+'</h3><p>'+esc(r[1])+'</p>'));
@@ -676,7 +843,31 @@ var DATA = {
   // aplicaciones potenciales
   var ap=document.getElementById('apps'); ap.innerHTML='';
   DATA.apps[lang].forEach(function(r){
-   ap.appendChild(el('div','appbox','<span class="tag">'+t('app.kicker')+'</span><h3>'+esc(r[0])+'</h3><p>'+esc(r[1])+'</p>'));
+   ap.appendChild(el('div','appbox','<h3>'+esc(r[0])+'</h3><p>'+esc(r[1])+'</p>'));
+  });
+
+  // oferta comercial
+  var of=document.getElementById('offers'); of.innerHTML='';
+  DATA.offers[lang].forEach(function(o){
+   of.appendChild(el('article','offer','<h3>'+esc(o[0])+'</h3><dl>'+
+     '<div><dt>'+t('offer.problem')+'</dt><dd>'+esc(o[1])+'</dd></div>'+
+     '<div><dt>'+t('offer.approach')+'</dt><dd>'+esc(o[2])+'</dd></div>'+
+     '<div><dt>'+t('offer.deliver')+'</dt><dd>'+esc(o[3])+'</dd></div></dl>'+
+     '<a class="link" href="#contacto">'+t('offer.cta')+' &rarr;</a>'));
+  });
+
+  // etapas de trabajo
+  var eg=document.getElementById('engage'); eg.innerHTML='';
+  DATA.engage[lang].forEach(function(s,i){
+   eg.appendChild(el('div','step','<span class="num">0'+(i+1)+'</span><h3>'+esc(s[0])+'</h3><p>'+esc(s[1])+'</p>'));
+  });
+
+  // tipos de consulta
+  var iq=document.getElementById('inq'); iq.innerHTML='';
+  DATA.inquiry[lang].forEach(function(q,i){
+   var b=el('button',null,esc(q[0])); b.type='button'; b.dataset.i=i;
+   b.setAttribute('aria-pressed', String(i===inqSel));
+   iq.appendChild(b);
   });
 
   // fundador
@@ -684,10 +875,6 @@ var DATA = {
   DATA.fbio[lang].forEach(function(p){ fb.appendChild(el('p',null,esc(p))); });
   var fc=document.getElementById('fchips'); fc.innerHTML='';
   DATA.fchips[lang].forEach(function(c){ fc.appendChild(el('span','chip',esc(c))); });
-
-  // motivos de contacto
-  var rs=document.getElementById('reasons'); rs.innerHTML='';
-  DATA.reasons[lang].forEach(function(r){ rs.appendChild(el('li',null,esc(r))); });
 
   // navegación del pie
   var fn=document.getElementById('fnav'); fn.innerHTML='';
@@ -712,15 +899,25 @@ var DATA = {
   var ot=document.querySelector('meta[property="og:title"]'); if(ot) ot.setAttribute('content', t('meta.title'));
   var od=document.querySelector('meta[property="og:description"]'); if(od) od.setAttribute('content', t('meta.desc'));
   var ol=document.querySelector('meta[property="og:locale"]'); if(ol) ol.setAttribute('content', lang==='en'?'en_US':'es_CO');
-  // acciones de contacto
-  var m=document.getElementById('mailto');
-  if(m) m.href='mailto:'+document.getElementById('mail').textContent.trim()+
-    '?subject='+encodeURIComponent(t('contact.subject'))+'&body='+encodeURIComponent(t('contact.body'));
-  var w=document.getElementById('walink');
-  if(w) w.href='https://wa.me/573507938124?text='+encodeURIComponent(t('contact.wamsg'));
+  enlacesContacto();
   // estado del selector
   document.querySelectorAll('.lang button').forEach(function(b){
    b.setAttribute('aria-pressed', String(b.dataset.lang===lang));
+  });
+ }
+
+ /* Los enlaces de contacto se arman con el idioma activo y el tipo de consulta elegido.
+    No hay formulario: el alojamiento es estático y un formulario sin servicio de envío
+    solo simularía el envío. mailto y WhatsApp sí entregan el mensaje de verdad. */
+ function enlacesContacto(){
+  var q = (DATA.inquiry[lang]||[])[inqSel] || DATA.inquiry[FALLBACK][0];
+  var m=document.getElementById('mailto');
+  if(m) m.href='mailto:'+document.getElementById('mail').textContent.trim()+
+    '?subject='+encodeURIComponent(q[1])+'&body='+encodeURIComponent(q[2]);
+  var w=document.getElementById('walink');
+  if(w) w.href='https://wa.me/573507938124?text='+encodeURIComponent(q[3]);
+  document.querySelectorAll('#inq button').forEach(function(b){
+   b.setAttribute('aria-pressed', String(Number(b.dataset.i)===inqSel));
   });
  }
 
@@ -742,6 +939,12 @@ var DATA = {
 
  document.querySelectorAll('.lang button').forEach(function(b){
   b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+ });
+
+ // selector de tipo de consulta
+ document.getElementById('inq').addEventListener('click', function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  inqSel=Number(b.dataset.i); enlacesContacto();
  });
 
  // menú móvil
