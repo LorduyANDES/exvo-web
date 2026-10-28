@@ -189,6 +189,27 @@ section{padding-block:var(--gap)}
 .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:22px}
 .chip{border:1px solid var(--line); border-radius:999px; padding:7px 14px; font-size:13.5px; background:var(--surface)}
 
+/* ── manifiesto de marca ── */
+.brand{background:linear-gradient(160deg,var(--azul-900),var(--azul)); color:#B9CBDA; padding-block:var(--gap)}
+.brandgrid{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(34px,5vw,76px); align-items:start}
+.lockup .mono{color:var(--turquesa); display:block; margin-bottom:20px}
+.bigmark{font-weight:800; font-size:clamp(50px,7.6vw,98px); letter-spacing:.055em; color:#fff; line-height:1}
+.bigmark i{font-style:normal; background:linear-gradient(120deg,var(--turquesa),var(--dorado));
+  -webkit-background-clip:text; background-clip:text; color:transparent}
+.bigsub{margin-top:15px; font-size:clamp(19px,2.3vw,29px); font-weight:700; color:var(--turquesa); letter-spacing:-.022em}
+.brandstory p{font-size:clamp(16px,1.5vw,18.5px); line-height:1.65; margin-bottom:19px; max-width:62ch}
+.brandclose{margin:4px 0 0; padding-left:20px; border-left:3px solid var(--dorado);
+  color:#fff; font-weight:600; max-width:62ch}
+.ecobrand{margin-top:20px; padding-left:18px; border-left:3px solid var(--turquesa);
+  font-size:15.5px; max-width:70ch}
+.sig{display:grid; gap:3px; text-align:right}
+.sig b{color:#fff; font-weight:700}
+.sig em{font-style:normal; color:#7E94A8}
+@media (max-width:860px){
+  .brandgrid{grid-template-columns:1fr; gap:28px}
+  .sig{text-align:left}
+}
+
 /* ── oferta comercial ── */
 .offer{position:relative; isolation:isolate; background:var(--page); border:1px solid var(--line);
   border-radius:18px; padding:30px; display:flex; flex-direction:column; gap:16px; transition:transform .25s ease}
@@ -317,11 +338,27 @@ footer a:hover{color:var(--turquesa)}
   </div>
 </section>
 
+<section class="brand" id="marca">
+  <div class="wrap brandgrid">
+    <div class="lockup">
+      <span class="mono" data-i18n="brand.kicker">El significado de EXVO</span>
+      <div class="bigmark">EX<i>VO</i></div>
+      <p class="bigsub" data-i18n="brand.sub">Experience Evolution.</p>
+    </div>
+    <div class="brandstory">
+      <p data-i18n="brand.p1">EXVO representa la evolución de la experiencia: la convicción de que la tecnología debe ir más allá de incorporar nuevas herramientas. Debe transformar la manera en que las personas trabajan, las organizaciones toman decisiones y las empresas generan valor.</p>
+      <p data-i18n="brand.p2">Conectamos experiencia humana, inteligencia artificial, tecnologías emergentes y alianzas estratégicas para convertir esa evolución en oportunidades empresariales concretas.</p>
+      <p class="brandclose" data-i18n="brand.close">Experience Evolution define nuestra identidad. Inteligencia más allá de las respuestas expresa hacia dónde queremos avanzar.</p>
+    </div>
+  </div>
+</section>
+
 <section class="alt" id="ecosistema">
   <div class="wrap">
     <div class="head">
       <span class="mono" data-i18n="eco.kicker">Nuestro ecosistema</span>
       <h2 data-i18n="eco.title">Cuatro pilares estratégicos.</h2>
+      <p class="ecobrand" data-i18n="eco.brand">Nuestros cuatro pilares hacen realidad Experience Evolution: evolucionando la toma de decisiones empresariales, conectando tecnologías inteligentes con aplicaciones reales, transformando operaciones y desarrollando alianzas estratégicas.</p>
       <p data-i18n="eco.lead">Cada pilar responde a una necesidad distinta y los cuatro se refuerzan entre sí. Pueden abordarse por separado o combinarse en un proyecto de transformación.</p>
     </div>
     <div class="grid g2" id="pillars"></div>
@@ -481,7 +518,7 @@ footer a:hover{color:var(--turquesa)}
     </div>
     <div class="legal">
       <span data-i18n="footer.rights">© 2026 EXVO S.A.S. Todos los derechos reservados.</span>
-      <span class="mono">Intelligence Beyond Answers</span>
+      <span class="sig"><b>Experience Evolution.</b><em data-i18n="footer.tagline">Inteligencia más allá de las respuestas.</em></span>
     </div>
   </div>
 </footer>
@@ -500,6 +537,12 @@ var I18N = {
   "hero.sub":"Donde la experiencia empresarial se encuentra con la inteligencia artificial aplicada.",
   "hero.lead":"EXVO es una empresa colombiana de tecnología que conecta inteligencia empresarial, IA aplicada, dispositivos emergentes y alianzas estratégicas para abordar desafíos reales del negocio y desarrollar nuevas oportunidades.",
   "about.kicker":"Nosotros","about.title":"Tecnología con propósito empresarial.",
+  "brand.kicker":"El significado de EXVO","brand.sub":"Experience Evolution.",
+  "brand.p1":"EXVO representa la evolución de la experiencia: la convicción de que la tecnología debe ir más allá de incorporar nuevas herramientas. Debe transformar la manera en que las personas trabajan, las organizaciones toman decisiones y las empresas generan valor.",
+  "brand.p2":"Conectamos experiencia humana, inteligencia artificial, tecnologías emergentes y alianzas estratégicas para convertir esa evolución en oportunidades empresariales concretas.",
+  "brand.close":"Experience Evolution define nuestra identidad. Inteligencia más allá de las respuestas expresa hacia dónde queremos avanzar.",
+  "eco.brand":"Nuestros cuatro pilares hacen realidad Experience Evolution: evolucionando la toma de decisiones empresariales, conectando tecnologías inteligentes con aplicaciones reales, transformando operaciones y desarrollando alianzas estratégicas.",
+  "footer.tagline":"Inteligencia más allá de las respuestas.",
   "eco.kicker":"Nuestro ecosistema","eco.title":"Cuatro pilares estratégicos.","eco.pillar":"PILAR",
   "eco.lead":"Cada pilar responde a una necesidad distinta y los cuatro se refuerzan entre sí. Pueden abordarse por separado o combinarse en un proyecto de transformación.",
   "sol.kicker":"Soluciones de IA para empresas","sol.title":"Dónde la inteligencia artificial resuelve un problema de negocio.",
@@ -545,6 +588,12 @@ var I18N = {
   "hero.sub":"Where business expertise meets applied artificial intelligence.",
   "hero.lead":"EXVO is a Colombian technology company connecting enterprise intelligence, applied AI, emerging hardware, and strategic partnerships to address real business challenges and create new opportunities.",
   "about.kicker":"About EXVO","about.title":"Built for business. Driven by intelligence.",
+  "brand.kicker":"The Meaning Behind EXVO","brand.sub":"Experience Evolution.",
+  "brand.p1":"EXVO stands for Experience Evolution: the belief that technology should do more than introduce new tools. It should transform how people work, how organizations make decisions, and how businesses create value.",
+  "brand.p2":"We bring together human expertise, artificial intelligence, emerging technologies, and strategic partnerships to turn that evolution into practical business opportunities.",
+  "brand.close":"Experience Evolution defines who we are. Intelligence Beyond Answers expresses where we are going.",
+  "eco.brand":"Our four pillars bring Experience Evolution to life: advancing business decisions, connecting intelligent technologies with real-world applications, transforming operations, and developing strategic partnerships.",
+  "footer.tagline":"Intelligence Beyond Answers.",
   "eco.kicker":"Our ecosystem","eco.title":"Four strategic pillars.","eco.pillar":"PILLAR",
   "eco.lead":"Each pillar answers a different need, and the four reinforce one another. They can be addressed separately or combined into a transformation programme.",
   "sol.kicker":"Enterprise AI solutions","sol.title":"Where artificial intelligence solves a business problem.",
