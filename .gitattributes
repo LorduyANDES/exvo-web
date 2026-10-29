@@ -5,3 +5,4 @@ CNAME text eol=lf
 *.svg text eol=lf
 *.png binary
 *.jpg binary
+*.woff2 binary
