@@ -81,6 +81,119 @@ img{max-width:100%}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth; scroll-padding-top:76px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important; animation:none!important}}
+
+/* ── Pilares: escenario 3D. La profundidad la calcula el navegador con
+      transform 3D; cada capa vive en un plano translateZ propio y el
+      conjunto rota con el puntero. Sin librerias ni peticiones externas. ── */
+#ecosistema.stage{background:var(--azul-900)}
+#ecosistema.stage .head h2{color:#fff}
+#ecosistema.stage .head .mono{color:var(--turquesa)}
+#ecosistema.stage .head .ecobrand{color:#AFC4D6}
+#ecosistema.stage .head p{color:#8FA6B9}
+
+.p3d-grid{display:grid; gap:16px; perspective:1500px; perspective-origin:50% 42%;
+  grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1000px){.p3d-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.p3d-grid{grid-template-columns:minmax(0,1fr)}}
+
+.p3d{position:relative; height:352px; border-radius:18px; overflow:hidden; cursor:pointer;
+  border:1px solid rgba(85,220,198,.15); background:linear-gradient(168deg,#1B3550 0%,#0B1826 72%);
+  transform-style:preserve-3d; will-change:transform;
+  transform:translate3d(0,0,0) rotateX(calc(var(--ry,0)*1deg)) rotateY(calc(var(--rx,0)*1deg));
+  transition:transform .55s cubic-bezier(.19,.78,.3,1), border-color .45s, box-shadow .45s;
+  outline:none}
+.p3d.on{border-color:rgba(85,220,198,.42);
+  transform:translate3d(0,-6px,58px) rotateX(calc(var(--ry,0)*1deg)) rotateY(calc(var(--rx,0)*1deg));
+  box-shadow:0 36px 70px -24px rgba(0,0,0,.75), 0 0 46px -16px rgba(85,220,198,.3)}
+.p3d:focus-visible{border-color:var(--turquesa); box-shadow:0 0 0 3px rgba(85,220,198,.3)}
+
+/* luz especular que sigue al puntero, en el plano del cristal */
+.p3d-glow{position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .45s;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(85,220,198,.17),transparent 62%)}
+.p3d.on .p3d-glow{opacity:1}
+
+/* ── la escena: tres planos a distinta profundidad ── */
+.p3d-scene{position:absolute; left:50%; top:104px; width:220px; height:154px; margin-left:-110px;
+  transform-style:preserve-3d; pointer-events:none;
+  transition:top .55s cubic-bezier(.19,.78,.3,1), width .55s cubic-bezier(.19,.78,.3,1),
+             height .55s cubic-bezier(.19,.78,.3,1), margin-left .55s cubic-bezier(.19,.78,.3,1)}
+.p3d.on .p3d-scene{top:84px; width:152px; height:106px; margin-left:-76px}
+.p3d-scene>div{position:absolute; inset:0; transform-style:preserve-3d}
+.p3d-scene svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
+.p3d-z1{transform:translateZ(6px);  opacity:0; transition:opacity .5s .02s, transform .6s cubic-bezier(.19,.78,.3,1)}
+.p3d-z2{transform:translateZ(34px); opacity:0; transition:opacity .5s .08s, transform .6s .04s cubic-bezier(.19,.78,.3,1)}
+.p3d-z3{transform:translateZ(68px); opacity:0; transition:opacity .5s .14s, transform .6s .08s cubic-bezier(.19,.78,.3,1)}
+.p3d .p3d-z1{opacity:.07} .p3d .p3d-z2{opacity:.13} .p3d .p3d-z3{opacity:.16}
+.p3d.on .p3d-z1{opacity:.3}
+.p3d.on .p3d-z2{opacity:.62}
+.p3d.on .p3d-z3{opacity:.8}
+.p3d-scene .nodo{animation:p3dPulso 3.4s ease-in-out infinite}
+.p3d-scene .nodo:nth-of-type(2){animation-delay:.5s}
+.p3d-scene .nodo:nth-of-type(3){animation-delay:1.1s}
+.p3d-scene .nodo:nth-of-type(4){animation-delay:1.7s}
+@keyframes p3dPulso{0%,100%{opacity:.45} 50%{opacity:1}}
+.p3d-scene .flujo{stroke-dasharray:4 9; animation:p3dFlujo 2.6s linear infinite}
+@keyframes p3dFlujo{to{stroke-dashoffset:-26}}
+
+/* ── el texto, en su propio plano por delante de la escena ── */
+.p3d-body{position:absolute; inset:0; padding:22px 21px; display:flex; flex-direction:column;
+  transform:translateZ(42px); transform-style:preserve-3d}
+.p3d-num{font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500;
+  letter-spacing:.12em; color:var(--turquesa)}
+.p3d-title{margin:9px 0 0; font-size:19px; line-height:1.25; letter-spacing:-.02em; color:#fff; font-weight:700}
+.p3d-sub{margin-top:7px; font-size:13px; line-height:1.45; color:#8FA6B9; transition:opacity .35s, transform .45s}
+.p3d.on .p3d-sub{opacity:0; transform:translateY(-6px)}
+
+/* el panel que se revela: absoluto, de modo que nada se reacomoda al abrir */
+.p3d-reveal{position:absolute; left:21px; right:21px; top:200px; bottom:19px; overflow:hidden;
+  opacity:0; transform:translateY(14px);
+  transition:opacity .42s .1s, transform .5s .1s cubic-bezier(.19,.78,.3,1); pointer-events:none}
+.p3d.on .p3d-reveal{opacity:1; transform:translateY(0)}
+.p3d-reveal p{margin:0; font-size:13.5px; line-height:1.52; color:#CFE0EC}
+.p3d-reveal ul{list-style:none; margin:12px 0 0; padding:0; display:grid; gap:6px}
+.p3d-reveal li{position:relative; padding-left:14px; font-size:12px; line-height:1.4; color:#8FA6B9}
+.p3d-reveal li::before{content:''; position:absolute; left:0; top:.5em; width:5px; height:5px;
+  border-radius:1.5px; background:var(--turquesa)}
+
+.p3d-hint{position:absolute; right:19px; top:19px; width:21px; height:21px; border-radius:50%;
+  border:1px solid rgba(85,220,198,.35); color:var(--turquesa); font-size:13px; line-height:19px;
+  text-align:center; transform:translateZ(42px); transition:opacity .35s}
+.p3d.on .p3d-hint{opacity:0}
+
+/* El mismo estado, disparado por :hover donde hay puntero de verdad. Asi el
+   efecto no depende de que el JS haya enganchado los oyentes. */
+@media (hover:hover) and (min-width:641px){
+  .p3d:hover{border-color:rgba(85,220,198,.42);
+    transform:translate3d(0,-6px,58px) rotateX(calc(var(--ry,0)*1deg)) rotateY(calc(var(--rx,0)*1deg));
+    box-shadow:0 36px 70px -24px rgba(0,0,0,.75), 0 0 46px -16px rgba(85,220,198,.3)}
+  .p3d:hover .p3d-glow{opacity:1}
+  .p3d:hover .p3d-scene{top:84px; width:152px; height:106px; margin-left:-76px}
+  .p3d:hover .p3d-z1{opacity:.3}
+  .p3d:hover .p3d-z2{opacity:.62}
+  .p3d:hover .p3d-z3{opacity:.8}
+  .p3d:hover .p3d-sub{opacity:0; transform:translateY(-6px)}
+  .p3d:hover .p3d-reveal{opacity:1; transform:translateY(0)}
+  .p3d:hover .p3d-hint{opacity:0}
+}
+
+/* Sin 3D donde no conviene: pantallas finas, punteros tactiles y quien pide
+   menos movimiento. La tarjeta sigue abriendo, pero en plano. */
+@media (max-width:640px), (hover:none){
+  .p3d-grid{perspective:none}
+  .p3d, .p3d.on{transform:none}
+  .p3d-z1,.p3d-z2,.p3d-z3{transform:none}
+  .p3d-body,.p3d-hint{transform:none}
+  .p3d{height:auto; min-height:196px}
+  .p3d.on{min-height:352px}
+  .p3d-scene{top:98px; width:186px; height:130px; margin-left:-93px}
+}
+@media (prefers-reduced-motion:reduce){
+  .p3d-grid{perspective:none}
+  .p3d, .p3d.on{transform:none}
+  .p3d-z1,.p3d-z2,.p3d-z3{transform:none}
+  .p3d-body,.p3d-hint{transform:none}
+}
+
 body{
   margin:0; background:var(--page); color:var(--body);
   font-family:var(--ui),"Segoe UI",system-ui,-apple-system,sans-serif;
@@ -137,11 +250,7 @@ a{color:inherit}
 .btn-1:hover{background:var(--dorado)}
 .btn-2{border-color:rgba(255,255,255,.3); color:#fff}
 .btn-2:hover{border-color:var(--turquesa); color:var(--turquesa)}
-.pillars-strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr)); gap:1px;
-  margin-top:clamp(44px,6vw,72px); background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.1); border-radius:14px; overflow:hidden}
-.pillars-strip div{background:rgba(11,24,38,.55); padding:20px 22px}
-.pillars-strip b{display:block; color:#fff; font-size:15px; font-weight:700; letter-spacing:-.01em}
-.pillars-strip span{display:block; margin-top:5px; font-size:13px; color:#8FA6B9}
+#strip{margin-top:clamp(44px,6vw,72px)}
 
 /* ── secciones ── */
 section{padding-block:var(--gap)}
@@ -338,7 +447,7 @@ footer a:hover{color:var(--turquesa)}
       <a class="btn btn-1" href="#soluciones" data-i18n="cta.primary">Explorar soluciones</a>
       <a class="btn btn-2" href="#alianzas" data-i18n="cta.secondary">Explorar una alianza</a>
     </div>
-    <div class="pillars-strip" id="strip"></div>
+    <div class="p3d-grid" id="strip"></div>
   </div>
 </section>
 
@@ -860,6 +969,141 @@ var DATA = {
  var lang = FALLBACK;
  var inqSel = 0;                            // tipo de consulta seleccionado para el correo
 
+
+ /* Escenas de los pilares. Cada una son tres <svg> que el CSS coloca en
+    planos translateZ distintos: al mover el puntero, las capas se desplazan
+    entre si y producen el paralaje. Trazo fino y paleta de marca. */
+
+ /* Frase corta de cada pilar: nombra el entregable, no la categoria.
+    Salen de las propias viñetas de servicio de cada pilar. */
+
+ /* Explicacion breve de cada pilar, la que aparece al abrir la tarjeta.
+    Deliberadamente corta: el panel tiene alto fijo y el texto largo no cabe. */
+ var SENTIDO = {
+  es:['Convertimos datos y problemas de negocio en criterio accionable para decidir.',
+      'Acercamos dispositivos de IA y tecnologías emergentes, con integración y aplicación práctica.',
+      'Diseñamos agentes, automatizaciones e integraciones que mejoran el desempeño de la operación.',
+      'Conectamos innovadores tecnológicos globales con organizaciones y mercados de Colombia.'],
+  en:['We turn data and business problems into actionable intelligence for better decisions.',
+      'We bring AI devices and emerging technologies, with integration and practical implementation.',
+      'We design agents, automations and integrations that improve operational performance.',
+      'We connect global technology innovators with organizations and markets in Colombia.']
+ };
+
+ var P3D = {
+  es:[['intelligence','Tableros ejecutivos y análisis de escenarios'],
+      ['hardware','Vestibles, gafas y agentes físicos de IA'],
+      ['solutions','Agentes de IA que automatizan flujos de trabajo'],
+      ['partnerships','Fabricantes de IA que buscan entrar al mercado colombiano']],
+  en:[['intelligence','Executive dashboards and scenario analysis'],
+      ['hardware','AI wearables, glasses and physical agents'],
+      ['solutions','AI agents that automate workflows'],
+      ['partnerships','AI vendors entering the Colombian market']]
+ };
+
+ var ESCENA = {
+  // 01 · red neuronal: celosia de fondo, conexiones, nodos vivos
+  intelligence:
+   ['<svg viewBox="0 0 200 140"><g fill="none" stroke="#55DCC6" stroke-width=".5">'
+    +'<path d="M20 30h160M20 70h160M20 110h160M50 10v120M100 10v120M150 10v120"/></g></svg>',
+    '<svg viewBox="0 0 200 140"><g fill="none" stroke="#55DCC6" stroke-width="1" opacity=".7">'
+    +'<path d="M38 96 L72 44 L128 58 L162 34M72 44 L96 104 L128 58M96 104 L162 108M38 96 L96 104"/>'
+    +'</g></svg>',
+    '<svg viewBox="0 0 200 140">'
+    +'<circle class="nodo" cx="72" cy="44" r="5" fill="#55DCC6"/>'
+    +'<circle class="nodo" cx="128" cy="58" r="4" fill="#E8BD7C"/>'
+    +'<circle class="nodo" cx="96" cy="104" r="5.5" fill="#55DCC6"/>'
+    +'<circle class="nodo" cx="162" cy="34" r="3.5" fill="#55DCC6"/>'
+    +'<circle cx="38" cy="96" r="3" fill="#55DCC6" opacity=".6"/>'
+    +'<circle cx="162" cy="108" r="3" fill="#55DCC6" opacity=".6"/></svg>'],
+
+  // 02 · dispositivo con interfaces y senal alrededor
+  hardware:
+   ['<svg viewBox="0 0 200 140"><g fill="none" stroke="#55DCC6" stroke-width=".6">'
+    +'<circle cx="100" cy="70" r="30"/><circle cx="100" cy="70" r="46"/><circle cx="100" cy="70" r="62"/>'
+    +'</g></svg>',
+    '<svg viewBox="0 0 200 140"><rect x="74" y="38" width="52" height="64" rx="9" fill="none" '
+    +'stroke="#55DCC6" stroke-width="1.4"/><rect x="82" y="48" width="36" height="34" rx="3" '
+    +'fill="#55DCC6" opacity=".16"/><circle cx="100" cy="92" r="3.5" fill="#55DCC6"/>'
+    +'<path d="M88 58h20M88 66h14" stroke="#55DCC6" stroke-width="1.1" fill="none"/></svg>',
+    '<svg viewBox="0 0 200 140">'
+    +'<g fill="none" stroke="#E8BD7C" stroke-width="1.1">'
+    +'<rect class="nodo" x="26" y="30" width="30" height="19" rx="3"/>'
+    +'<rect class="nodo" x="146" y="48" width="30" height="19" rx="3"/>'
+    +'<rect class="nodo" x="34" y="92" width="30" height="19" rx="3"/></g>'
+    +'<g stroke="#55DCC6" stroke-width=".8" fill="none" class="flujo">'
+    +'<path d="M56 40h16M146 58h-18M64 102h12"/></g></svg>'],
+
+  // 03 · arquitectura de agentes y flujos que se ejecutan
+  solutions:
+   ['<svg viewBox="0 0 200 140"><g fill="none" stroke="#55DCC6" stroke-width=".5" opacity=".9">'
+    +'<path d="M14 18h172v104H14z"/><path d="M14 52h172M14 88h172M72 18v104M128 18v104"/></g></svg>',
+    '<svg viewBox="0 0 200 140"><g fill="none" stroke="#55DCC6" stroke-width="1.3">'
+    +'<rect x="22" y="56" width="38" height="28" rx="5"/>'
+    +'<rect x="81" y="26" width="38" height="28" rx="5"/>'
+    +'<rect x="81" y="86" width="38" height="28" rx="5"/>'
+    +'<rect x="140" y="56" width="38" height="28" rx="5"/></g></svg>',
+    '<svg viewBox="0 0 200 140"><g stroke="#55DCC6" stroke-width="1.2" fill="none" class="flujo">'
+    +'<path d="M60 68 L81 42M60 72 L81 98M119 42 L140 66M119 98 L140 74"/></g>'
+    +'<circle class="nodo" cx="41" cy="70" r="4" fill="#55DCC6"/>'
+    +'<circle class="nodo" cx="100" cy="40" r="3.5" fill="#E8BD7C"/>'
+    +'<circle class="nodo" cx="100" cy="100" r="3.5" fill="#E8BD7C"/>'
+    +'<circle class="nodo" cx="159" cy="70" r="4" fill="#55DCC6"/></svg>'],
+
+  // 04 · globo de meridianos, arcos y un nodo encendido en Colombia
+  partnerships:
+   ['<svg viewBox="0 0 200 140"><g fill="none" stroke="#55DCC6" stroke-width=".55">'
+    +'<circle cx="100" cy="70" r="48"/><ellipse cx="100" cy="70" rx="20" ry="48"/>'
+    +'<ellipse cx="100" cy="70" rx="38" ry="48"/><path d="M52 70h96M58 46h84M58 94h84"/></g></svg>',
+    '<svg viewBox="0 0 200 140"><g fill="none" stroke="#E8BD7C" stroke-width="1" class="flujo">'
+    +'<path d="M70 96 C 40 60, 96 18, 138 40"/><path d="M70 96 C 96 52, 150 62, 166 92"/>'
+    +'<path d="M70 96 C 48 104, 30 72, 44 50"/></g></svg>',
+    '<svg viewBox="0 0 200 140">'
+    +'<circle cx="70" cy="96" r="6" fill="#E8BD7C"/>'
+    +'<circle class="nodo" cx="70" cy="96" r="12" fill="none" stroke="#E8BD7C" stroke-width=".9"/>'
+    +'<circle class="nodo" cx="138" cy="40" r="4" fill="#55DCC6"/>'
+    +'<circle class="nodo" cx="166" cy="92" r="4" fill="#55DCC6"/>'
+    +'<circle class="nodo" cx="44" cy="50" r="4" fill="#55DCC6"/></svg>']
+ };
+
+
+ /* Interaccion de los pilares. En escritorio el puntero inclina la tarjeta y
+    mueve el reflejo; en tactil y en pantallas finas se abre al tocar, una
+    sola a la vez. El teclado la abre al recibir el foco. */
+ function pilares3D(){
+  var cards=[].slice.call(document.querySelectorAll('.p3d'));
+  var plano=window.matchMedia('(hover:none), (max-width:640px), (prefers-reduced-motion:reduce)');
+
+  function cerrar(c){ c.classList.remove('on'); c.style.removeProperty('--rx'); c.style.removeProperty('--ry'); }
+  function abrir(c){ cards.forEach(function(o){ if(o!==c) cerrar(o); }); c.classList.add('on'); }
+
+  cards.forEach(function(c){
+   var pend=null;
+   c.addEventListener('pointermove', function(e){
+    if(plano.matches || pend) return;
+    pend=requestAnimationFrame(function(){
+     pend=null;
+     var r=c.getBoundingClientRect(); if(!r.width) return;
+     var px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+     c.style.setProperty('--rx', ((px-.5)*13).toFixed(2));
+     c.style.setProperty('--ry', ((.5-py)*9).toFixed(2));
+     c.style.setProperty('--mx', (px*100).toFixed(1)+'%');
+     c.style.setProperty('--my', (py*100).toFixed(1)+'%');
+    });
+   });
+   c.addEventListener('pointerenter', function(){ if(!plano.matches) abrir(c); });
+   c.addEventListener('pointerleave', function(){ if(!plano.matches) cerrar(c); });
+   c.addEventListener('click', function(){
+    if(plano.matches) c.classList.contains('on') ? cerrar(c) : abrir(c);
+   });
+   c.addEventListener('focus', function(){ abrir(c); });
+   c.addEventListener('blur', function(){ cerrar(c); });
+   c.addEventListener('keydown', function(e){
+    if(e.key==='Enter' || e.key===' '){ e.preventDefault(); c.classList.contains('on') ? cerrar(c) : abrir(c); }
+   });
+  });
+ }
+
  function t(k){ return (I18N[lang] && I18N[lang][k]) || I18N[FALLBACK][k] || k; }
  function el(tag,cls,html){ var n=document.createElement(tag); if(cls)n.className=cls; if(html!=null)n.innerHTML=html; return n; }
  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]}); }
@@ -868,7 +1112,21 @@ var DATA = {
   var d;
   // franja de pilares
   var strip=document.getElementById('strip'); strip.innerHTML='';
-  DATA.strip[lang].forEach(function(r){ strip.appendChild(el('div',null,'<b>'+esc(r[0])+'</b><span>'+esc(r[1])+'</span>')); });
+  DATA.strip[lang].forEach(function(r,i){
+   var meta=P3D[lang][i], sc=ESCENA[meta[0]];
+   var a=el('article','p3d',
+     '<div class="p3d-glow"></div>'+
+     '<div class="p3d-scene" aria-hidden="true"><div class="p3d-z1">'+sc[0]+'</div>'+
+       '<div class="p3d-z2">'+sc[1]+'</div><div class="p3d-z3">'+sc[2]+'</div></div>'+
+     '<span class="p3d-hint" aria-hidden="true">+</span>'+
+     '<div class="p3d-body"><span class="p3d-num">'+t('eco.pillar')+' 0'+(i+1)+'</span>'+
+       '<h3 class="p3d-title">'+esc(r[0])+'</h3>'+
+       '<p class="p3d-sub">'+esc(meta[1])+'</p>'+
+       '<div class="p3d-reveal"><p>'+esc(SENTIDO[lang][i])+'</p></div></div>');
+   a.tabIndex=0;
+   strip.appendChild(a);
+  });
+  pilares3D();
 
   // nosotros
   var ai=document.getElementById('about-intro'); ai.innerHTML='';
